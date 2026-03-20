@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sebastian Brain Architecture</title>
+<style>
+:root{--bg:#07070f;--bg2:#0d0d1c;--bg3:#111128;--border:#1e1e3a;--purple:#7c4dff;--purple-dim:#3d2680;--green:#00e676;--green-dim:#004d22;--blue:#29b6f6;--blue-dim:#0d3d52;--yellow:#ffd740;--yellow-dim:#4d3d00;--orange:#ff9100;--teal:#00e5ff;--teal-dim:#003d44;--pink:#f48fb1;--pink-dim:#4d1a2a;--red:#ff5252;--text:#e0e0ff;--text-dim:#666688;--text-faint:#2a2a44}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh}
+.header{text-align:center;padding:32px 20px 8px}
+.header h1{font-size:1.6em;font-weight:300;letter-spacing:6px;color:var(--purple);text-transform:uppercase}
+.header p{font-size:.72em;color:var(--text-dim);margin-top:6px;letter-spacing:3px}
+.tabs{display:flex;justify-content:center;gap:4px;margin:24px 0 0;padding:0 20px}
+.tab{padding:8px 20px;border-radius:6px 6px 0 0;font-size:.76em;letter-spacing:1px;cursor:pointer;border:1px solid var(--border);border-bottom:none;background:var(--bg2);color:var(--text-dim);transition:all .2s}
+.tab.active{background:var(--bg3);color:var(--purple);border-color:var(--purple)}
+.panel{display:none;padding:0 20px 40px}
+.panel.active{display:block}
+.arch-wrap{width:100%;overflow-x:auto;margin:20px 0}
+.arch-wrap svg{display:block;margin:0 auto}
+.sec{margin:28px 0 14px;display:flex;align-items:center;gap:10px}
+.sec-line{flex:1;height:1px;background:var(--border)}
+.sec-title{font-size:.68em;letter-spacing:3px;color:var(--text-dim);text-transform:uppercase;white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.grid-2{grid-template-columns:1fr}}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;position:relative;overflow:hidden}
+.card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.c-purple::after{background:linear-gradient(90deg,var(--purple),#b388ff)}
+.c-green::after{background:linear-gradient(90deg,var(--green),#69f0ae)}
+.c-blue::after{background:linear-gradient(90deg,var(--blue),#81d4fa)}
+.c-yellow::after{background:linear-gradient(90deg,var(--yellow),#ffe57f)}
+.c-orange::after{background:linear-gradient(90deg,var(--orange),#ffcc80)}
+.c-teal::after{background:linear-gradient(90deg,var(--teal),#84ffff)}
+.c-pink::after{background:linear-gradient(90deg,var(--pink),#fce4ec)}
+.c-red::after{background:linear-gradient(90deg,var(--red),#ff867f)}
+.card-head{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.card-icon{font-size:1.1em}
+.card-title{font-size:.75em;letter-spacing:2px;color:var(--text-dim);text-transform:uppercase}
+.card-badge{margin-left:auto;padding:2px 8px;border-radius:10px;font-size:.65em}
+.badge-ok{background:var(--green-dim);color:var(--green);border:1px solid var(--green-dim)}
+.badge-warn{background:var(--yellow-dim);color:var(--yellow);border:1px solid var(--yellow-dim)}
+.badge-off{background:#1a1a2a;color:#444;border:1px solid #222}
+.row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--text-faint);font-size:.76em;gap:8px}
+.row:last-child{border-bottom:none}
+.lbl{color:var(--text-dim)}
+.val{color:var(--text);text-align:right}
+.val.ok{color:var(--green)}.val.warn{color:var(--yellow)}.val.err{color:var(--red)}.val.hi{color:#b388ff}.val.bl{color:var(--teal)}
+.bar{height:5px;background:var(--bg3);border-radius:3px;margin:4px 0 10px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;transition:width .5s}
+.fill-g{background:linear-gradient(90deg,var(--green),#69f0ae)}
+.fill-y{background:linear-gradient(90deg,var(--yellow),#ffe57f)}
+.fill-p{background:linear-gradient(90deg,var(--purple),#b388ff)}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.pill{padding:3px 10px;border-radius:12px;font-size:.68em;border:1px solid}
+.pill-ok{border-color:var(--green-dim);color:var(--green);background:rgba(0,230,118,.05)}
+.pill-warn{border-color:var(--yellow-dim);color:var(--yellow);background:rgba(255,215,64,.05)}
+.pill-err{border-color:#4d1a1a;color:var(--red);background:rgba(255,82,82,.05)}
+.pill-hi{border-color:var(--purple-dim);color:#b388ff;background:rgba(124,77,255,.05)}
+.tree{font-size:.76em}
+.tnode{display:flex;align-items:center;gap:8px;padding:6px 8px;margin:4px 0;border-radius:6px;border:1px solid}
+.tnode.on{border-color:var(--green-dim);color:var(--green);background:rgba(0,230,118,.04)}
+.tnode.opt{border-color:var(--yellow-dim);color:var(--yellow);background:rgba(255,215,64,.04)}
+.tnode .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.tnode.on .dot{background:var(--green);box-shadow:0 0 6px var(--green)}
+.tnode.opt .dot{background:var(--yellow);box-shadow:0 0 6px var(--yellow)}
+.tindent{padding-left:16px;border-left:1px solid var(--border);margin-left:11px}
+.mem-type{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px;margin:6px 0}
+.mem-type-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.mem-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.mem-name{font-size:.78em;font-weight:600}
+.mem-desc{font-size:.7em;color:var(--text-dim);line-height:1.5}
+.mem-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.mem-tag{font-size:.65em;padding:2px 6px;border-radius:4px}
+.flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px;margin:16px 0}
+.fbox{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;text-align:center;font-size:.74em}
+.fbox .icon{font-size:1.2em;display:block;margin-bottom:2px}
+.fbox .name{font-weight:600}
+.fbox .sub{font-size:.85em;color:var(--text-dim)}
+.fbox.f-tg{border-color:#0077aa;color:#29b6f6}
+.fbox.f-gw{border-color:var(--purple-dim);color:#b388ff}
+.fbox.f-br{border-color:var(--green-dim);color:var(--green)}
+.fbox.f-ai{border-color:var(--yellow-dim);color:var(--yellow)}
+.fbox.f-mem{border-color:var(--teal-dim);color:var(--teal)}
+.farr{color:var(--border);font-size:1.4em;padding:0 2px}
+</style></head><body>
+<div class="header">
+  <h1>⚡ Sebastian — Brain Architecture</h1>
+  <p>Chemical.Black · OpenClaw 2026.3.13 · openrouter/free · March 2026</p>
+</div>
+<div class="tabs">
+  <div class="tab active" onclick="show('arch')">Architecture</div>
+  <div class="tab" onclick="show('memory')">Memory System</div>
+  <div class="tab" onclick="show('models')">Model Distribution</div>
+  <div class="tab" onclick="show('watchdog')">Watchdogs</div>
+</div>
+<div id="tab-arch" class="panel active">
+<div class="arch-wrap">
+<svg width="900" height="540" viewBox="0 0 900 540" xmlns="http://www.w3.org/2000/svg" style="font-family:'Segoe UI',sans-serif">
+  <defs>
+    <marker id="a-p" markerWidth="9" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#7c4dff"/></marker>
+    <marker id="a-g" markerWidth="9" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#00e676"/></marker>
+    <marker id="a-y" markerWidth="9" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#ffd740"/></marker>
+    <marker id="a-t" markerWidth="9" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,9 3.5,0 7" fill="#00e5ff"/></marker>
+    <filter id="glow-p"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="glow-g"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="900" height="540" rx="14" fill="#07070f" stroke="#1e1e3a" stroke-width="1"/>
+  <rect x="20" y="215" width="110" height="80" rx="8" fill="#0a0f18" stroke="#0077aa" stroke-width="1.5"/>
+  <text x="75" y="240" text-anchor="middle" fill="#29b6f6" font-size="18">📱</text>
+  <text x="75" y="256" text-anchor="middle" fill="#29b6f6" font-size="10" font-weight="600">TELEGRAM</text>
+  <text x="75" y="269" text-anchor="middle" fill="#005577" font-size="8">@Sebastianoo_bot</text>
+  <text x="75" y="282" text-anchor="middle" fill="#003344" font-size="8">ID: 1737300067</text>
+  <line x1="130" y1="248" x2="198" y2="248" stroke="#7c4dff" stroke-width="1.5" marker-end="url(#a-p)"/>
+  <text x="164" y="241" text-anchor="middle" fill="#3d2680" font-size="8">message</text>
+  <line x1="198" y1="262" x2="130" y2="262" stroke="#00e676" stroke-width="1.5" marker-end="url(#a-g)"/>
+  <text x="164" y="278" text-anchor="middle" fill="#004d22" font-size="8">reply</text>
+  <rect x="200" y="170" width="155" height="165" rx="10" fill="#0c0a1e" stroke="#7c4dff" stroke-width="1.5" filter="url(#glow-p)"/>
+  <text x="277" y="193" text-anchor="middle" fill="#b388ff" font-size="13">🦀</text>
+  <text x="277" y="208" text-anchor="middle" fill="#b388ff" font-size="10" font-weight="600" letter-spacing="1">GATEWAY</text>
+  <line x1="210" y1="215" x2="345" y2="215" stroke="#1e1e3a" stroke-width="1"/>
+  <text x="277" y="229" text-anchor="middle" fill="#665599" font-size="8">Port: 18789 WebSocket</text>
+  <text x="277" y="243" text-anchor="middle" fill="#665599" font-size="8">Agent: Sebastian main</text>
+  <text x="277" y="257" text-anchor="middle" fill="#665599" font-size="8">Model: openrouter/free</text>
+  <text x="277" y="271" text-anchor="middle" fill="#554488" font-size="8">mem0: DISABLED</text>
+  <text x="277" y="285" text-anchor="middle" fill="#443366" font-size="8">memory.backend: qmd</text>
+  <text x="277" y="299" text-anchor="middle" fill="#332255" font-size="8">Browser ctrl: 18791</text>
+  <text x="277" y="313" text-anchor="middle" fill="#221144" font-size="8">Telegram: connected</text>
+  <text x="277" y="327" text-anchor="middle" fill="#221144" font-size="8">WhatsApp: disabled</text>
+  <line x1="355" y1="232" x2="418" y2="232" stroke="#ffd740" stroke-width="1.5" marker-end="url(#a-y)"/>
+  <text x="386" y="225" text-anchor="middle" fill="#664d00" font-size="8">API call</text>
+  <line x1="418" y1="248" x2="355" y2="248" stroke="#00e676" stroke-width="1.5" marker-end="url(#a-g)"/>
+  <text x="386" y="264" text-anchor="middle" fill="#004d22" font-size="8">response</text>
+  <rect x="420" y="80" width="175" height="320" rx="10" fill="#0c0c0a" stroke="#ffd740" stroke-width="1.5"/>
+  <text x="507" y="103" text-anchor="middle" fill="#ffd740" font-size="13">🤖</text>
+  <text x="507" y="118" text-anchor="middle" fill="#ffd740" font-size="10" font-weight="600">AI MODELS</text>
+  <text x="507" y="131" text-anchor="middle" fill="#664d00" font-size="8">66 Providers Total</text>
+  <line x1="430" y1="138" x2="585" y2="138" stroke="#1e1e0a" stroke-width="1"/>
+  <rect x="432" y="145" width="151" height="85" rx="6" fill="#0d0d08" stroke="#ffd740" stroke-width="0.8"/>
+  <text x="507" y="162" text-anchor="middle" fill="#ffd740" font-size="9" font-weight="600">OpenRouter x33</text>
+  <text x="507" y="175" text-anchor="middle" fill="#998800" font-size="8">openrouter/free</text>
+  <text x="507" y="188" text-anchor="middle" fill="#665500" font-size="8">Auto-picks best free model</text>
+  <text x="507" y="201" text-anchor="middle" fill="#443300" font-size="8">gemma - llama - mistral</text>
+  <rect x="475" y="208" width="64" height="14" rx="4" fill="#332200"/>
+  <text x="507" y="219" text-anchor="middle" fill="#ffd740" font-size="8">PRIMARY</text>
+  <rect x="432" y="240" width="151" height="70" rx="6" fill="#080d12" stroke="#29b6f6" stroke-width="0.8"/>
+  <text x="507" y="257" text-anchor="middle" fill="#29b6f6" font-size="9" font-weight="600">Gemini Chat x21</text>
+  <text x="507" y="270" text-anchor="middle" fill="#005577" font-size="8">gemini-2.5-flash-lite</text>
+  <text x="507" y="283" text-anchor="middle" fill="#004466" font-size="8">gemini-19 to 33</text>
+  <text x="507" y="296" text-anchor="middle" fill="#003355" font-size="8">FALLBACK</text>
+  <rect x="432" y="320" width="151" height="68" rx="6" fill="#080f10" stroke="#00e5ff" stroke-width="0.8"/>
+  <text x="507" y="337" text-anchor="middle" fill="#00e5ff" font-size="9" font-weight="600">Memory Pool Keys x18</text>
+  <text x="507" y="350" text-anchor="middle" fill="#006688" font-size="7.5">qmd_embed: gemini 1,2,7,8,13,14</text>
+  <text x="507" y="362" text-anchor="middle" fill="#006688" font-size="7.5">mem0_embed: gemini 3,4,9,10,15,16</text>
+  <text x="507" y="374" text-anchor="middle" fill="#006688" font-size="7.5">web_search: gemini 5,6,11,12,17,18</text>
+  <text x="507" y="383" text-anchor="middle" fill="#003344" font-size="7">gemini-2.0-flash embedding API</text>
+  <rect x="432" y="397" width="151" height="38" rx="6" fill="#0a080f" stroke="#7c4dff" stroke-width="0.8"/>
+  <text x="507" y="412" text-anchor="middle" fill="#9c6dff" font-size="9" font-weight="600">mem0_llm Pool x7</text>
+  <text x="507" y="425" text-anchor="middle" fill="#443388" font-size="7.5">openrouter-11,12,13,14,15,16,19</text>
+  <rect x="625" y="100" width="250" height="310" rx="10" fill="#080f08" stroke="#00e676" stroke-width="1.5" filter="url(#glow-g)"/>
+  <text x="750" y="123" text-anchor="middle" fill="#00e676" font-size="13">🧠</text>
+  <text x="750" y="138" text-anchor="middle" fill="#00e676" font-size="10" font-weight="600">OC BRAIN</text>
+  <text x="750" y="151" text-anchor="middle" fill="#005522" font-size="8">oc_brain.py - Dashboard 18800</text>
+  <line x1="635" y1="158" x2="865" y2="158" stroke="#0a1a0a" stroke-width="1"/>
+  <text x="645" y="175" fill="#338855" font-size="8">+ Gateway health check</text>
+  <text x="820" y="175" fill="#225533" font-size="8" text-anchor="end">every 30s</text>
+  <text x="645" y="191" fill="#338855" font-size="8">+ All 66 API keys test</text>
+  <text x="820" y="191" fill="#225533" font-size="8" text-anchor="end">every 6 min</text>
+  <text x="645" y="207" fill="#338855" font-size="8">+ Pool health tracker</text>
+  <text x="820" y="207" fill="#225533" font-size="8" text-anchor="end">live</text>
+  <text x="645" y="223" fill="#338855" font-size="8">+ mem0_llm key rotation</text>
+  <text x="820" y="223" fill="#225533" font-size="8" text-anchor="end">on failure</text>
+  <text x="645" y="239" fill="#338855" font-size="8">+ Primary model selector</text>
+  <text x="820" y="239" fill="#225533" font-size="8" text-anchor="end">on start</text>
+  <text x="645" y="255" fill="#338855" font-size="8">+ Telegram alerts</text>
+  <text x="820" y="255" fill="#225533" font-size="8" text-anchor="end">instant</text>
+  <text x="645" y="271" fill="#338855" font-size="8">+ Usage token tracker</text>
+  <text x="820" y="271" fill="#225533" font-size="8" text-anchor="end">daily</text>
+  <text x="645" y="287" fill="#338855" font-size="8">+ Auto-restart gateway</text>
+  <text x="820" y="287" fill="#225533" font-size="8" text-anchor="end">on death</text>
+  <line x1="635" y1="298" x2="865" y2="298" stroke="#0a1a0a" stroke-width="1"/>
+  <text x="750" y="313" text-anchor="middle" fill="#225533" font-size="8">master.json locked 444</text>
+  <text x="750" y="327" text-anchor="middle" fill="#225533" font-size="8">brain_state.json - pool_health.json</text>
+  <text x="750" y="341" text-anchor="middle" fill="#225533" font-size="8">Cooldown 429: 2h - timeout: 2h</text>
+  <text x="750" y="355" text-anchor="middle" fill="#225533" font-size="8">CHAT_ONLY_KEYS: 31 keys</text>
+  <text x="750" y="369" text-anchor="middle" fill="#225533" font-size="8">POOL_KEYS: 25 dedicated</text>
+  <text x="750" y="383" text-anchor="middle" fill="#115522" font-size="8">Alert low: 10 - critical: 5</text>
+  <text x="750" y="395" text-anchor="middle" fill="#115522" font-size="8">API check interval: 360s</text>
+  <line x1="625" y1="240" x2="355" y2="240" stroke="#00e676" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#a-g)"/>
+  <text x="490" y="232" text-anchor="middle" fill="#004d22" font-size="7.5">monitors / auto-restart</text>
+  <line x1="625" y1="200" x2="595" y2="200" stroke="#00e676" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#a-g)"/>
+  <rect x="20" y="400" width="380" height="125" rx="10" fill="#080810" stroke="#29b6f6" stroke-width="1.5"/>
+  <text x="210" y="422" text-anchor="middle" fill="#29b6f6" font-size="11" font-weight="600">SCRAPER SYSTEM</text>
+  <line x1="30" y1="430" x2="390" y2="430" stroke="#0d0d1e" stroke-width="1"/>
+  <rect x="32" y="437" width="103" height="78" rx="6" fill="#05050f" stroke="#29b6f6" stroke-width="0.7"/>
+  <text x="83" y="452" text-anchor="middle" fill="#29b6f6" font-size="8" font-weight="600">server.py</text>
+  <text x="83" y="464" text-anchor="middle" fill="#004488" font-size="7">Port 5001</text>
+  <text x="83" y="476" text-anchor="middle" fill="#004488" font-size="7">BrowserQL API</text>
+  <text x="83" y="488" text-anchor="middle" fill="#003366" font-size="7">14 Browserless keys</text>
+  <text x="83" y="500" text-anchor="middle" fill="#002244" font-size="7">7000 req/hour</text>
+  <rect x="143" y="437" width="103" height="78" rx="6" fill="#05050f" stroke="#00e5ff" stroke-width="0.7"/>
+  <text x="194" y="452" text-anchor="middle" fill="#00e5ff" font-size="8" font-weight="600">rotator.py</text>
+  <text x="194" y="464" text-anchor="middle" fill="#006688" font-size="7">Key rotation</text>
+  <text x="194" y="476" text-anchor="middle" fill="#006688" font-size="7">bql_rotator.py</text>
+  <text x="194" y="488" text-anchor="middle" fill="#004455" font-size="7">key_pool.json locked</text>
+  <text x="194" y="500" text-anchor="middle" fill="#003344" font-size="7">insert_hook.py</text>
+  <rect x="254" y="437" width="130" height="78" rx="6" fill="#05050f" stroke="#b388ff" stroke-width="0.7"/>
+  <text x="319" y="452" text-anchor="middle" fill="#b388ff" font-size="8" font-weight="600">Dashboards</text>
+  <text x="319" y="464" text-anchor="middle" fill="#553399" font-size="7">18800 Brain</text>
+  <text x="319" y="476" text-anchor="middle" fill="#553399" font-size="7">18801 Combined</text>
+  <text x="319" y="488" text-anchor="middle" fill="#442288" font-size="7">8765 Health API</text>
+  <text x="319" y="500" text-anchor="middle" fill="#331177" font-size="7">brain_diagram.html</text>
+  <rect x="420" y="445" width="450" height="82" rx="10" fill="#080f10" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="645" y="464" text-anchor="middle" fill="#00e5ff" font-size="11" font-weight="600">MEMORY STORE</text>
+  <line x1="430" y1="472" x2="860" y2="472" stroke="#0d1e1e" stroke-width="1"/>
+  <text x="485" y="487" text-anchor="middle" fill="#006688" font-size="7.5">MEMORY.md</text>
+  <text x="485" y="498" text-anchor="middle" fill="#004455" font-size="7">file-based JSON</text>
+  <text x="575" y="487" text-anchor="middle" fill="#558800" font-size="7.5">qmd vector</text>
+  <text x="575" y="498" text-anchor="middle" fill="#335500" font-size="7">vector_store.db</text>
+  <text x="665" y="487" text-anchor="middle" fill="#886600" font-size="7.5">mem0 episodic</text>
+  <text x="665" y="498" text-anchor="middle" fill="#554400" font-size="7">DISABLED</text>
+  <text x="760" y="487" text-anchor="middle" fill="#554400" font-size="7.5">session memory</text>
+  <text x="760" y="498" text-anchor="middle" fill="#443300" font-size="7">sessions.json</text>
+  <text x="845" y="487" text-anchor="middle" fill="#554400" font-size="7.5">HEARTBEAT.md</text>
+  <text x="845" y="498" text-anchor="middle" fill="#443300" font-size="7">session context</text>
+  <line x1="277" y1="335" x2="507" y2="445" stroke="#00e5ff" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#a-t)"/>
+  <rect x="20" y="15" width="300" height="22" rx="4" fill="#0a0a14" stroke="#1e1e3a" stroke-width="0.5"/>
+  <line x1="30" y1="26" x2="55" y2="26" stroke="#7c4dff" stroke-width="1.5" marker-end="url(#a-p)"/>
+  <text x="60" y="30" fill="#665599" font-size="8">message/call</text>
+  <line x1="115" y1="26" x2="140" y2="26" stroke="#00e676" stroke-width="1.5" marker-end="url(#a-g)"/>
+  <text x="145" y="30" fill="#338855" font-size="8">response</text>
+  <line x1="195" y1="26" x2="220" y2="26" stroke="#00e676" stroke-width="1" stroke-dasharray="3,2" marker-end="url(#a-g)"/>
+  <text x="225" y="30" fill="#225533" font-size="8">monitor</text>
+</svg>
+</div>
+<div class="sec"><div class="sec-line"></div><div class="sec-title">Live Status</div><div class="sec-line"></div></div>
+<div class="grid">
+  <div class="card c-purple">
+    <div class="card-head"><span class="card-icon">🦀</span><span class="card-title">Gateway</span><span class="card-badge badge-ok">ONLINE</span></div>
+    <div class="row"><span class="lbl">Primary Model</span><span class="val hi">openrouter/free</span></div>
+    <div class="row"><span class="lbl">Port</span><span class="val">18789 WebSocket</span></div>
+    <div class="row"><span class="lbl">Telegram</span><span class="val ok">@Sebastianoo_bot</span></div>
+    <div class="row"><span class="lbl">mem0 plugin</span><span class="val warn">DISABLED</span></div>
+    <div class="row"><span class="lbl">memory.backend</span><span class="val ok">qmd</span></div>
+  </div>
+  <div class="card c-green">
+    <div class="card-head"><span class="card-icon">🧠</span><span class="card-title">OC Brain</span><span class="card-badge badge-ok">RUNNING</span></div>
+    <div class="row"><span class="lbl">Dashboard</span><span class="val ok">18800</span></div>
+    <div class="row"><span class="lbl">Gateway check</span><span class="val">every 30s</span></div>
+    <div class="row"><span class="lbl">API key test</span><span class="val">every 6 min</span></div>
+    <div class="row"><span class="lbl">Chat keys</span><span class="val ok">31 total</span></div>
+    <div class="row"><span class="lbl">Pool keys</span><span class="val">25 dedicated</span></div>
+  </div>
+  <div class="card c-blue">
+    <div class="card-head"><span class="card-icon">🕷️</span><span class="card-title">Scraper</span><span class="card-badge badge-ok">RUNNING</span></div>
+    <div class="row"><span class="lbl">API server</span><span class="val ok">5001</span></div>
+    <div class="row"><span class="lbl">Browserless keys</span><span class="val ok">14 keys</span></div>
+    <div class="row"><span class="lbl">Capacity</span><span class="val">7,000 req/hour</span></div>
+    <div class="row"><span class="lbl">Stealth mode</span><span class="val ok">BQL active</span></div>
+    <div class="row"><span class="lbl">key_pool.json</span><span class="val warn">locked 400</span></div>
+  </div>
+</div>
+</div>
+<div id="tab-memory" class="panel">
+<div class="sec"><div class="sec-line"></div><div class="sec-title">Memory Architecture</div><div class="sec-line"></div></div>
+<div class="flow">
+  <div class="fbox f-tg"><span class="icon">📱</span><span class="name">User Message</span><span class="sub">Telegram</span></div>
+  <div class="farr">&#8594;</div>
+  <div class="fbox f-gw"><span class="icon">🦀</span><span class="name">Gateway</span><span class="sub">receives</span></div>
+  <div class="farr">&#8594;</div>
+  <div class="fbox f-mem"><span class="icon">🔍</span><span class="name">Memory Recall</span><span class="sub">qmd search</span></div>
+  <div class="farr">&#8594;</div>
+  <div class="fbox f-ai"><span class="icon">🤖</span><span class="name">AI Model</span><span class="sub">generates reply</span></div>
+  <div class="farr">&#8594;</div>
+  <div class="fbox f-mem"><span class="icon">💾</span><span class="name">Memory Save</span><span class="sub">background</span></div>
+</div>
+<div class="sec"><div class="sec-line"></div><div class="sec-title">Memory Types</div><div class="sec-line"></div></div>
+<div class="grid">
+  <div class="card c-teal">
+    <div class="card-head"><span class="card-icon">📂</span><span class="card-title">File-Based Memory</span><span class="card-badge badge-ok">ACTIVE</span></div>
+    <div class="mem-type">
+      <div class="mem-type-head"><div class="mem-dot" style="background:#00e5ff"></div><span class="mem-name" style="color:#00e5ff">MEMORY.md</span></div>
+      <div class="mem-desc">Main memory store. JSON array of facts and events saved in workspace. Loaded on every session start. Persists across restarts.</div>
+      <div class="mem-tags"><span class="mem-tag" style="background:#003344;color:#00e5ff">workspace/MEMORY.md</span><span class="mem-tag" style="background:#003344;color:#00e5ff">JSON format</span></div>
+    </div>
+    <div class="mem-type">
+      <div class="mem-type-head"><div class="mem-dot" style="background:#84ffff"></div><span class="mem-name" style="color:#84ffff">SOUL.md / IDENTITY.md</span></div>
+      <div class="mem-desc">Sebastian permanent identity, values, domains, and personality. Loaded at bootstrap. Never changes unless manually edited.</div>
+      <div class="mem-tags"><span class="mem-tag" style="background:#003344;color:#84ffff">SOUL.md</span><span class="mem-tag" style="background:#003344;color:#84ffff">IDENTITY.md</span><span class="mem-tag" style="background:#003344;color:#84ffff">RULES.md</span></div>
+    </div>
+    <div class="mem-type">
+      <div class="mem-type-head"><div class="mem-dot" style="background:#40c4ff"></div><span class="mem-name" style="color:#40c4ff">Session Notes</span></div>
+      <div class="mem-desc">Daily session notes written by Sebastian to memory/YYYY-MM-DD.md. Captures decisions, constraints, open questions after each session.</div>
+      <div class="mem-tags"><span class="mem-tag" style="background:#003344;color:#40c4ff">workspace/memory/</span><span class="mem-tag" style="background:#003344;color:#40c4ff">daily .md files</span></div>
+    </div>
+  </div>
+  <div class="card c-yellow">
+    <div class="card-head"><span class="card-icon">🔍</span><span class="card-title">QMD Vector Search</span><span class="card-badge badge-warn">ERRORS non-critical</span></div>
+    <div class="mem-type">
+      <div class="mem-type-head"><div class="mem-dot" style="background:#ffd740"></div><span class="mem-name" style="color:#ffd740">QMD Engine</span></div>
+      <div class="mem-desc">Vector-based semantic search over workspace markdown files. SQLite binary has known libdl issue - causes warning but does NOT block responses.</div>
+      <div class="mem-tags"><span class="mem-tag" style="background:#332200;color:#ffd740">vector_store.db</span><span class="mem-tag" style="background:#332200;color:#ffd740">semantic search</span><span class="mem-tag" style="background:#4d2200;color:#ff9100">sqlite bug</span></div>
+    </div>
+    <div class="mem-type">
+      <div class="mem-type-head"><div class="mem-dot" style="background:#ffe57f"></div><span class="mem-name" style="color:#ffe57f">QMD Collections</span></div>
+      <div class="mem-desc">Three registered collections: memory-root-main for MEMORY.md, memory-alt-main for memory.md, memory-dir-main for workspace/memory/*.md</div>
+      <div class="mem-tags"><span class="mem-tag" style="background:#332200;color:#ffe57f">memory-root-main</span><span class="mem-tag" style="background:#332200;color:#ffe57f">memory-alt-main</span><span class="mem-tag" style="background:#332200;color:#ffe57f">memory-dir-main</span></div>
+    </div>
+    <div class="sec" style="margin:10px 0 6px"><div class="sec-line"></div><div class="sec-title">Pool Keys</div><div class="sec-line"></div></div>
+    <div class="row"><span class="lbl">qmd_embed</span><span class="val ok">gemini-1,2,7,8,13,14</span></div>
+    <div class="bar"><div class="bar-fill fill-g" style="width:67%"></div></div>
+    <div class="row"><span class="lbl">mem0_embedder</span><span class="val ok">gemini-3,4,9,10,15,16</span></div>
+    <div class="bar"><div class="bar-fill fill-g" style="width:83%"></div></div>
+    <div class="row"><span class="lbl">web_search</span><span class="val ok">gemini-5,6,11,12,17,18</span></div>
+    <div class="bar"><div class="bar-fill fill-g" style="width:67%"></div></div>
+    <div class="row"><span class="lbl">mem0_llm</span><span class="val ok">openrouter-11 to 19</span></div>
+    <div class="bar"><div class="bar-fill fill-p" style="width:71%"></div></div>
+  </div>
+  <div class="card c-pink">
+    <div class="card-head"><span class="card-icon">🧬</span><span class="card-title">Episodic Memory mem0</span><span class="card-badge badge-off">DISABLED</span></div>
+    <div class="mem-type">
+      <div class="mem-type-head"><div class="mem-dot" style="background:#f48fb1"></div><span class="mem-name" style="color:#f48fb1">openclaw-mem0 Plugin</span></div>
+      <div class="mem-desc">Episodic memory engine that captures and recalls facts from conversations using LLM extraction. DISABLED due to better-sqlite3 binary glibc/Bionic incompatibility on Android.</div>
+      <div class="mem-tags"><span class="mem-tag" style="background:#4d1a2a;color:#f48fb1">memories.db</span><span class="mem-tag" style="background:#2a0a0a;color:#ff5252">DISABLED</span></div>
+    </div>
+    <div class="mem-type">
+      <div class="mem-type-head"><div class="mem-dot" style="background:#fce4ec"></div><span class="mem-name" style="color:#fce4ec">Why Disabled</span></div>
+      <div class="mem-desc">better-sqlite3 native binary compiled against wrong runtime. Error: libdl.so.2 version LIBC not found. Sebastian works perfectly without it.</div>
+      <div class="mem-tags"><span class="mem-tag" style="background:#4d1a2a;color:#f48fb1">ERR_DLOPEN_FAILED</span><span class="mem-tag" style="background:#4d1a2a;color:#f48fb1">libdl.so.2</span></div>
+    </div>
+    <div class="mem-type">
+      <div class="mem-type-head"><div class="mem-dot" style="background:#880e4f"></div><span class="mem-name" style="color:#aa5577">Session Memory</span></div>
+      <div class="mem-desc">Per-conversation context in sessions.json. Resets daily at 4AM or after 120 min idle. Active session: telegram:direct:1737300067</div>
+      <div class="mem-tags"><span class="mem-tag" style="background:#4d1a2a;color:#f48fb1">sessions.json</span><span class="mem-tag" style="background:#4d1a2a;color:#f48fb1">reset: 4AM</span><span class="mem-tag" style="background:#4d1a2a;color:#f48fb1">idle: 120min</span></div>
+    </div>
+  </div>
+</div>
+</div>
+<div id="tab-models" class="panel">
+<div class="sec"><div class="sec-line"></div><div class="sec-title">66 Providers</div><div class="sec-line"></div></div>
+<div class="grid">
+  <div class="card c-yellow">
+    <div class="card-head"><span class="card-icon">⭐</span><span class="card-title">OpenRouter 33 keys PRIMARY</span><span class="card-badge badge-ok">openrouter/free</span></div>
+    <div class="row"><span class="lbl">openrouter-1 to 8</span><span class="val hi">Chat primary</span></div>
+    <div class="row"><span class="lbl">openrouter-9 to 10</span><span class="val hi">Chat fallback</span></div>
+    <div class="row"><span class="lbl">openrouter-11 to 19</span><span class="val bl">mem0_llm pool</span></div>
+    <div class="row"><span class="lbl">openrouter-17 to 33</span><span class="val hi">Chat keys</span></div>
+    <div class="row"><span class="lbl">Model</span><span class="val ok">openrouter/free</span></div>
+    <div class="row"><span class="lbl">How it works</span><span class="val">auto-picks best free model</span></div>
+    <div class="pills"><span class="pill pill-ok">gemma-3n</span><span class="pill pill-ok">llama-3.3</span><span class="pill pill-ok">mistral-7b</span><span class="pill pill-hi">auto-rotates</span></div>
+  </div>
+  <div class="card c-blue">
+    <div class="card-head"><span class="card-icon">💙</span><span class="card-title">Gemini Chat 21 keys FALLBACK</span></div>
+    <div class="row"><span class="lbl">gemini-19 to 33</span><span class="val bl">Chat fallback keys</span></div>
+    <div class="row"><span class="lbl">Model</span><span class="val ok">gemini-2.5-flash-lite</span></div>
+    <div class="row"><span class="lbl">Role</span><span class="val">Fallback when OR rate-limited</span></div>
+    <div class="row"><span class="lbl">429 cooldown</span><span class="val">2 hours</span></div>
+  </div>
+  <div class="card c-teal">
+    <div class="card-head"><span class="card-icon">🔗</span><span class="card-title">Gemini Pool Keys 18 EMBED</span></div>
+    <div class="row"><span class="lbl">gemini-1,2,7,8,13,14</span><span class="val bl">qmd_embed</span></div>
+    <div class="row"><span class="lbl">gemini-3,4,9,10,15,16</span><span class="val bl">mem0_embedder</span></div>
+    <div class="row"><span class="lbl">gemini-5,6,11,12,17,18</span><span class="val bl">web_search</span></div>
+    <div class="row"><span class="lbl">Model</span><span class="val">gemini-2.0-flash</span></div>
+    <div class="row"><span class="lbl">API used</span><span class="val">Gemini Embedding API</span></div>
+  </div>
+  <div class="card c-purple">
+    <div class="card-head"><span class="card-icon">🔮</span><span class="card-title">mem0_llm Pool 7 keys LLM</span></div>
+    <div class="row"><span class="lbl">openrouter-11 to 16</span><span class="val hi">pool keys</span></div>
+    <div class="row"><span class="lbl">openrouter-19</span><span class="val hi">pool key</span></div>
+    <div class="row"><span class="lbl">Model</span><span class="val ok">openrouter/free</span></div>
+    <div class="row"><span class="lbl">Purpose</span><span class="val">Memory LLM extraction</span></div>
+  </div>
+</div>
+</div>
+<div id="tab-watchdog" class="panel">
+<div class="sec"><div class="sec-line"></div><div class="sec-title">4-Layer Protection</div><div class="sec-line"></div></div>
+<div class="grid-2">
+  <div class="card c-green">
+    <div class="card-head"><span class="card-icon">🐕</span><span class="card-title">Layer 1 OC Brain</span><span class="card-badge badge-ok">RUNNING</span></div>
+    <div class="tree">
+      <div class="tnode on"><div class="dot"></div>oc_brain.py Primary supervisor</div>
+      <div class="tindent">
+        <div class="tnode on"><div class="dot"></div>Gateway alive check every 30s</div>
+        <div class="tnode on"><div class="dot"></div>Auto-restart on death</div>
+        <div class="tnode on"><div class="dot"></div>66 API keys test every 6min</div>
+        <div class="tnode on"><div class="dot"></div>429 cooldown 2h management</div>
+        <div class="tnode on"><div class="dot"></div>mem0_llm pool rotation</div>
+        <div class="tnode on"><div class="dot"></div>Telegram alerts instant</div>
+        <div class="tnode on"><div class="dot"></div>Primary model selection</div>
+        <div class="tnode on"><div class="dot"></div>Usage token tracking daily</div>
+      </div>
+    </div>
+  </div>
+  <div class="card c-orange">
+    <div class="card-head"><span class="card-icon">🔧</span><span class="card-title">Layer 2 Gateway Watchdog</span><span class="card-badge badge-ok">RUNNING</span></div>
+    <div class="tree">
+      <div class="tnode on"><div class="dot"></div>openclaw-watchdog.sh</div>
+      <div class="tindent">
+        <div class="tnode on"><div class="dot"></div>Gateway health at 18789 every 30s</div>
+        <div class="tnode on"><div class="dot"></div>2 failures in a row triggers fix</div>
+        <div class="tnode on"><div class="dot"></div>Detects 400 quota errors</div>
+        <div class="tnode on"><div class="dot"></div>Detects typing TTL silence</div>
+        <div class="tnode on"><div class="dot"></div>Tests 10 Gemini + 5 OR keys</div>
+        <div class="tnode on"><div class="dot"></div>Fixes primary model on failure</div>
+      </div>
+    </div>
+  </div>
+  <div class="card c-blue">
+    <div class="card-head"><span class="card-icon">📊</span><span class="card-title">Layer 3 Scraper Watchdog</span><span class="card-badge badge-ok">RUNNING</span></div>
+    <div class="tree">
+      <div class="tnode on"><div class="dot"></div>scraper/watchdog.sh</div>
+      <div class="tindent">
+        <div class="tnode on"><div class="dot"></div>Monitors 18801 combined dashboard</div>
+        <div class="tnode on"><div class="dot"></div>Monitors 18800 brain dashboard</div>
+        <div class="tnode on"><div class="dot"></div>Restarts combined_dashboard.py</div>
+        <div class="tnode on"><div class="dot"></div>Restarts server.py if dead</div>
+        <div class="tnode on"><div class="dot"></div>Log rotation files over 1MB</div>
+      </div>
+    </div>
+  </div>
+  <div class="card c-purple">
+    <div class="card-head"><span class="card-icon">🔒</span><span class="card-title">Layer 4 Config Guard</span><span class="card-badge badge-warn">NOT IN AUTOSTART</span></div>
+    <div class="tree">
+      <div class="tnode opt"><div class="dot"></div>config_guard.py optional</div>
+      <div class="tindent">
+        <div class="tnode opt"><div class="dot"></div>Watches openclaw.json every 30s</div>
+        <div class="tnode opt"><div class="dot"></div>Compares vs master.json 444</div>
+        <div class="tnode opt"><div class="dot"></div>Protects telegram botToken</div>
+        <div class="tnode opt"><div class="dot"></div>Protects telegram allowFrom</div>
+        <div class="tnode opt"><div class="dot"></div>Protects exec security</div>
+        <div class="tnode opt"><div class="dot"></div>On tamper: restore + restart + alert</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sec"><div class="sec-line"></div><div class="sec-title">Do NOT Touch</div><div class="sec-line"></div></div>
+<div class="pills">
+  <span class="pill pill-err">memory.backend = qmd always</span>
+  <span class="pill pill-err">openclaw-mem0 DISABLED always</span>
+  <span class="pill pill-err">master.json locked 444</span>
+  <span class="pill pill-err">never set LD_LIBRARY_PATH glibc</span>
+  <span class="pill pill-err">never delete better-sqlite3/build</span>
+  <span class="pill pill-warn">autostart: openclaw gateway only</span>
+  <span class="pill pill-warn">NOT openclaw gateway start</span>
+</div>
+</div>
+<script>
+function show(tab){
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+  document.getElementById('tab-'+tab).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body></html>
