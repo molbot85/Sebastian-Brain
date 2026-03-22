@@ -1,32 +1,12 @@
 {
   "gateway": {
     "up": true,
-    "pid": "22052"
+    "pid": "9305"
   },
-  "primary": "openrouter-13/openrouter/free",
-  "chat_active": 17,
+  "primary": "openrouter-18/openrouter/free",
+  "chat_active": 16,
   "chat_total": 31,
   "resting": [
-    {
-      "name": "openrouter-15",
-      "until": 1774189558.9688349
-    },
-    {
-      "name": "openrouter-20",
-      "until": 1774189558.9688349
-    },
-    {
-      "name": "openrouter-24",
-      "until": 1774189558.9688349
-    },
-    {
-      "name": "openrouter-30",
-      "until": 1774189558.9688349
-    },
-    {
-      "name": "openrouter-7",
-      "until": 1774189558.9688349
-    },
     {
       "name": "openrouter-1",
       "until": 1774193099.4627917
@@ -46,6 +26,26 @@
     {
       "name": "openrouter-3",
       "until": 1774193099.4627917
+    },
+    {
+      "name": "openrouter-35",
+      "until": 1774193099.4627917
+    },
+    {
+      "name": "openrouter-4",
+      "until": 1774193099.4627917
+    },
+    {
+      "name": "openrouter-8",
+      "until": 1774193099.4627917
+    },
+    {
+      "name": "openrouter-14",
+      "until": 1774196068.7849975
+    },
+    {
+      "name": "openrouter-26",
+      "until": 1774196068.7849975
     }
   ],
   "pools": {
@@ -62,7 +62,7 @@
       "total": 6
     },
     "mem0_llm": {
-      "healthy": 4,
+      "healthy": 5,
       "total": 7
     }
   },
@@ -76,22 +76,22 @@
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[33m[agent/embedded]\u001b[39m \u001b[33membedded run agent end: runId=4fdc3f09-7a38-479c-8bdb-47f00e145256 isError=true model=op",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"agent/embedded\"}",
-      "time": "2026-03-"
-    },
-    {
       "msg": "\u001b[34m[tools]\u001b[39m \u001b[33mtools.profile (coding) allowlist contains unknown entries (apply_patch, memory_search, memory_get",
       "time": "2026-03-"
     },
     {
       "msg": "{\"subsystem\":\"tools\"}",
       "time": "2026-03-"
+    },
+    {
+      "msg": "[tools] exec failed: exec denied: allowlist miss",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "[tools] exec failed: exec denied: allowlist miss",
+      "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774188968.9491978,
-  "pushed_at_str": "2026-03-22 16:16:08"
+  "pushed_at": 1774192932.2993639,
+  "pushed_at_str": "2026-03-22 17:22:12"
 }
