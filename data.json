@@ -1,39 +1,27 @@
 {
   "gateway": {
     "up": true,
-    "pid": "25856"
+    "pid": "6855"
   },
-  "primary": "openrouter-16/openrouter/free",
+  "primary": "openrouter-9/openrouter/free",
   "chat_active": 11,
   "chat_total": 31,
   "resting": [
     {
-      "name": "openrouter-12",
-      "until": 1774203694.690542
+      "name": "openrouter-13",
+      "until": 1774210584.1237972
     },
     {
-      "name": "openrouter-11",
-      "until": 1774203575.691978
+      "name": "openrouter-14",
+      "until": 1774210584.1237972
     },
     {
-      "name": "openrouter-25",
-      "until": 1774203575.691978
+      "name": "openrouter-19",
+      "until": 1774210584.1237972
     },
     {
-      "name": "openrouter-35",
-      "until": 1774203575.691978
-    },
-    {
-      "name": "openrouter-5",
-      "until": 1774203575.691978
-    },
-    {
-      "name": "openrouter-18",
-      "until": 1774204017.2754452
-    },
-    {
-      "name": "openrouter-7",
-      "until": 1774204017.2754452
+      "name": "openrouter-23",
+      "until": 1774210584.1237972
     }
   ],
   "pools": {
@@ -50,36 +38,36 @@
       "total": 6
     },
     "mem0_llm": {
-      "healthy": 2,
+      "healthy": 3,
       "total": 7
     }
   },
   "recent_logs": [
     {
-      "msg": "{\"subsystem\":\"gateway/reload\"}",
+      "msg": "{\"subsystem\":\"memory\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"gateway/reload\"}",
+      "msg": "{\"subsystem\":\"gateway\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[36mdnsResultOrder=ipv4first (default-node22)\u001b[39m",
+      "msg": "{\"subsystem\":\"memory\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "msg": "{\"subsystem\":\"memory\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[36mautoSelectFamily=true (default-node22)\u001b[39m",
+      "msg": "{\"subsystem\":\"memory\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[33mfetch fallback: enabling sticky IPv4-only dispatcher (codes=ETIMEDOUT,ENETUNREACH)\u001b[39m",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774203539.1121707,
-  "pushed_at_str": "2026-03-22 20:18:59"
+  "pushed_at": 1774205285.0149689,
+  "pushed_at_str": "2026-03-22 20:48:05"
 }
