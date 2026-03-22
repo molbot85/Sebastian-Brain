@@ -1,10 +1,10 @@
 {
   "gateway": {
     "up": true,
-    "pid": "5086"
+    "pid": "25856"
   },
-  "primary": "openrouter-23/openrouter/free",
-  "chat_active": 12,
+  "primary": "openrouter-16/openrouter/free",
+  "chat_active": 11,
   "chat_total": 31,
   "resting": [
     {
@@ -12,40 +12,28 @@
       "until": 1774203694.690542
     },
     {
-      "name": "openrouter-2",
-      "until": 1774200044.9225566
+      "name": "openrouter-11",
+      "until": 1774203575.691978
     },
     {
-      "name": "openrouter-6",
-      "until": 1774200044.9225566
+      "name": "openrouter-25",
+      "until": 1774203575.691978
     },
     {
-      "name": "openrouter-20",
-      "until": 1774202257.7053115
+      "name": "openrouter-35",
+      "until": 1774203575.691978
     },
     {
-      "name": "openrouter-28",
-      "until": 1774202257.7053115
+      "name": "openrouter-5",
+      "until": 1774203575.691978
     },
     {
-      "name": "openrouter-10",
-      "until": 1774202584.4568932
+      "name": "openrouter-18",
+      "until": 1774204017.2754452
     },
     {
-      "name": "openrouter-15",
-      "until": 1774202584.4568932
-    },
-    {
-      "name": "openrouter-17",
-      "until": 1774202584.4568932
-    },
-    {
-      "name": "openrouter-27",
-      "until": 1774202584.4568932
-    },
-    {
-      "name": "openrouter-3",
-      "until": 1774202584.4568932
+      "name": "openrouter-7",
+      "until": 1774204017.2754452
     }
   ],
   "pools": {
@@ -62,7 +50,7 @@
       "total": 6
     },
     "mem0_llm": {
-      "healthy": 4,
+      "healthy": 2,
       "total": 7
     }
   },
@@ -76,22 +64,22 @@
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"gateway/channels/telegram\"}",
+      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[36mdnsResultOrder=ipv4first (default-node22)\u001b[39m",
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[33m[agent/embedded]\u001b[39m \u001b[33membedded run agent end: runId=3b190d0d-e0fa-4442-b033-a9e5f75867fe isError=true model=op",
+      "msg": "{\"subsystem\":\"telegram/network\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"agent/embedded\"}",
+      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[36mautoSelectFamily=true (default-node22)\u001b[39m",
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[34m[tools]\u001b[39m \u001b[33mtools.profile (coding) allowlist contains unknown entries (apply_patch, memory_search, memory_get",
+      "msg": "{\"subsystem\":\"telegram/network\"}",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774196909.0923114,
-  "pushed_at_str": "2026-03-22 18:28:29"
+  "pushed_at": 1774203539.1121707,
+  "pushed_at_str": "2026-03-22 20:18:59"
 }
