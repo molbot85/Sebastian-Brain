@@ -1,10 +1,10 @@
 {
   "gateway": {
     "up": true,
-    "pid": "7859"
+    "pid": "22052"
   },
   "primary": "openrouter-13/openrouter/free",
-  "chat_active": 18,
+  "chat_active": 17,
   "chat_total": 31,
   "resting": [
     {
@@ -26,6 +26,26 @@
     {
       "name": "openrouter-7",
       "until": 1774189558.9688349
+    },
+    {
+      "name": "openrouter-1",
+      "until": 1774193099.4627917
+    },
+    {
+      "name": "openrouter-11",
+      "until": 1774193099.4627917
+    },
+    {
+      "name": "openrouter-21",
+      "until": 1774193099.4627917
+    },
+    {
+      "name": "openrouter-22",
+      "until": 1774193099.4627917
+    },
+    {
+      "name": "openrouter-3",
+      "until": 1774193099.4627917
     }
   ],
   "pools": {
@@ -42,7 +62,7 @@
       "total": 6
     },
     "mem0_llm": {
-      "healthy": 3,
+      "healthy": 4,
       "total": 7
     }
   },
@@ -56,7 +76,7 @@
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[33m[agent/embedded]\u001b[39m \u001b[33membedded run agent end: runId=0baaa1cb-2260-4b72-bb1c-b576960ec35b isError=true model=op",
+      "msg": "\u001b[33m[agent/embedded]\u001b[39m \u001b[33membedded run agent end: runId=4fdc3f09-7a38-479c-8bdb-47f00e145256 isError=true model=op",
       "time": "2026-03-"
     },
     {
@@ -64,14 +84,14 @@
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[33m[agent/embedded]\u001b[39m \u001b[33membedded run agent end: runId=0baaa1cb-2260-4b72-bb1c-b576960ec35b isError=true model=op",
+      "msg": "\u001b[34m[tools]\u001b[39m \u001b[33mtools.profile (coding) allowlist contains unknown entries (apply_patch, memory_search, memory_get",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"agent/embedded\"}",
+      "msg": "{\"subsystem\":\"tools\"}",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774186050.2673943,
-  "pushed_at_str": "2026-03-22 15:27:30"
+  "pushed_at": 1774188968.9491978,
+  "pushed_at_str": "2026-03-22 16:16:08"
 }
