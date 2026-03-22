@@ -495,7 +495,8 @@ body{background:#010206!important;background-image:linear-gradient(rgba(0,212,25
   <div id="lsb-ts" style="color:var(--dim)">--:--:--</div>
 </div>
 <div class="header"><h1>⚡ Sebastian — System Architecture</h1><p>Chemical.Black · OpenClaw 2026.3.13 · March 22, 2026 · 71 Providers</p></div><div class="tabs"><div class="tab active" onclick="show('overview')">Overview</div><div class="tab" onclick="show('boot')">Boot Sequence</div><div class="tab" onclick="show('fallback')">Fallback Logic</div><div class="tab" onclick="show('memory')">Memory System</div><div class="tab" onclick="show('health')">Health Check</div><div class="tab" onclick="show('commands')">Commands</div>
-  <div class="tab" onclick="show('capacity')">Capacity</div></div><div id="tab-overview" class="panel active"><div class="sec"><div class="sec-line"></div><div class="sec-title">System Flow</div><div class="sec-line"></div></div><div class="flow"><div class="fnode n-tg"><span class="icon">📱</span><span class="name">Telegram</span><span class="sub">@Sebastianoo_bot</span></div><div class="farr">→</div><div class="fnode n-gw"><span class="icon">🦰</span><span class="name">Gateway</span><span class="sub">ws://127.0.0.1:18789</span></div><div class="farr">→</div><div class="fnode n-mem"><span class="icon">🔍</span><span class="name">Memory Recall</span><span class="sub">QMD vector search</span></div><div class="farr">→</div><div class="fnode n-ai"><span class="icon">🤖</span><span class="name">AI Model</span><span class="sub">openrouter/free</span></div><div class="farr">→</div><div class="fnode n-mem"><span class="icon">💾</span><span class="name">Memory Save</span><span class="sub">background</span></div><div class="farr">→</div><div class="fnode n-tg"><span class="icon">📤</span><span class="name">Reply</span><span class="sub">Telegram</span></div></div><div class="sec"><div class="sec-line"></div><div class="sec-title">Core Components</div><div class="sec-line"></div></div><div class="grid"><div class="card c-purple"><div class="card-head"><span class="card-icon">🦰</span><span class="card-title">OpenClaw Gateway</span><span class="badge badge-ok" id="gw-badge">LIVE</span></div><div class="row"><span class="lbl">Process</span><span class="val ok">openclaw gateway run</span></div><div class="row"><span class="lbl">Port</span><span class="val">18789 WebSocket</span></div><div class="row"><span class="lbl">Telegram</span><span class="val ok">connected</span></div><div class="row"><span class="lbl">mem0 plugin</span><span class="val warn">DISABLED</span></div><div class="row"><span class="lbl">memory.backend</span><span class="val ok">qmd</span></div></div><div class="card c-green"><div class="card-head"><span class="card-icon">🧠</span><span class="card-title">OC Brain</span><span class="badge badge-ok">RUNNING</span></div><div class="row"><span class="lbl">Process</span><span class="val ok">python3 ~/oc_brain.py</span></div><div class="row"><span class="lbl">Dashboard</span><span class="val">127.0.0.1:18800</span></div><div class="row"><span class="lbl">Gateway check</span><span class="val">every 30s</span></div><div class="row"><span class="lbl">API key test</span><span class="val">every 2 hours</span></div><div id="live-cap-inject"></div><div class="row"><span class="lbl">429 cooldown</span><span class="val warn">2 hours</span></div><div class="row"><span class="lbl">Alert critical</span><span class="val err">5 keys</span></div></div><div class="card c-blue"><div class="card-head"><span class="card-icon">🕷</span><span class="card-title">Scraper System</span><span class="badge badge-ok">RUNNING</span></div><div class="row"><span class="lbl">API server</span><span class="val ok">:5001 server.py</span></div><div class="row"><span class="lbl">Browser keys</span><span class="val">14 Browserless</span></div><div class="row"><span class="lbl">Capacity</span><span class="val">7,000 req/hour</span></div><div class="row"><span class="lbl">key_pool.json</span><span class="val warn">locked 400</span></div></div><div class="card c-teal"><div class="card-head"><span class="card-icon">📊</span><span class="card-title">Dashboards</span><span class="badge badge-ok">RUNNING</span></div><div class="row"><span class="lbl">Brain dash</span><span class="val ok">:18800</span></div><div class="row"><span class="lbl">Combined</span><span class="val ok">:18801</span></div><div class="row"><span class="lbl">Main dash</span><span class="val ok">:8765/brain</span></div><div class="row"><span class="lbl">GitHub Pages</span><span class="val bl">molbot85.github.io</span></div><div class="row"><span class="lbl">Tunnel</span><span class="val warn">on demand only</span></div></div></div><div class="sec"><div class="sec-line"></div><div class="sec-title">71 API Providers</div><div class="sec-line"></div></div><div class="grid-3"><div class="card c-yellow"><div class="card-head"><span class="card-icon">⭐</span><span class="card-title">OpenRouter 35 keys</span><span class="badge badge-ok">PRIMARY</span></div><div class="row"><span class="lbl">Model</span><span class="val ok live-val" id="primary-val">openrouter/free</span></div><div class="row"><span class="lbl">Chat keys</span><span class="val hi">openrouter-1 to 10, 17-35</span></div><div class="row"><span class="lbl">mem0_llm pool</span><span class="val bl">openrouter-11 to 19</span></div><div class="row"><span class="lbl">Auto-picks</span><span class="val ok">best free model</span></div><div class="pills"><span class="pill pill-ok">stepfun/step-3.5-flash</span><span class="pill pill-hi">auto-rotates</span></div></div><div class="card c-blue"><div class="card-head"><span class="card-icon">💙</span><span class="card-title">Gemini 36 keys</span><span class="badge badge-blue">POOL + CHAT</span></div><div class="row"><span class="lbl">Chat keys</span><span class="val bl">gemini-19 to 36</span></div><div class="row"><span class="lbl">Embed pools</span><span class="val warn">gemini-1 to 18</span></div><div class="row"><span class="lbl">Chat model</span><span class="val ok">gemini-2.5-flash-lite</span></div><div class="row"><span class="lbl">Embed API</span><span class="val">gemini-embedding-001</span></div><div class="pills"><span class="pill pill-warn">1-18: embed only</span><span class="pill pill-ok">19-36: chat</span></div></div><div class="card c-teal"><div class="card-head"><span class="card-icon">🔗</span><span class="card-title">Memory Pools</span><span class="badge badge-blue">DEDICATED</span></div><div id="live-pools-inject"></div><div class="row"><span class="lbl">qmd_embed</span><span class="val bl">gemini-1,2,7,8,13,14</span></div><div class="row"><span class="lbl">mem0_embedder</span><span class="val bl">gemini-3,4,9,10,15,16</span></div><div class="row"><span class="lbl">web_search</span><span class="val bl">gemini-5,6,11,12,17,18</span></div><div class="row"><span class="lbl">mem0_llm</span><span class="val hi">openrouter-11 to 19</span></div><div class="callout green" style="margin-top:10px;font-size:.68em;">Pool keys EXCLUDED from chat fallbacks</div></div></div><div class="sec"><div class="sec-line"></div><div class="sec-title">Protection Layers</div><div class="sec-line"></div></div><div class="grid-2"><div class="card c-green"><div class="card-head"><span class="card-icon">🐕</span><span class="card-title">Layer 1 — OC Brain</span><span class="badge badge-ok">ACTIVE</span></div><div class="tnode on"><div class="dot"></div>Gateway alive check every 30s</div><div class="tnode on"><div class="dot"></div>Auto-restart on death</div><div class="tnode on"><div class="dot"></div>71 API keys tested every 2h</div><div class="tnode on"><div class="dot"></div>429 cooldown 2h management</div><div class="tnode on"><div class="dot"></div>Telegram alerts (batched)</div><div class="tnode on"><div class="dot"></div>save_oc only on real change</div></div><div class="card c-orange"><div class="card-head"><span class="card-icon">🔧</span><span class="card-title">Layer 2 — Watchdog</span><span class="badge badge-warn">MANUAL</span></div><div class="tnode opt"><div class="dot"></div>openclaw-watchdog.sh</div><div class="tindent"><div class="tnode opt"><div class="dot"></div>Gateway health every 30s</div><div class="tnode opt"><div class="dot"></div>2 failures triggers fix</div><div class="tnode opt"><div class="dot"></div>Fixes primary on failure</div></div></div><div class="card c-purple"><div class="card-head"><span class="card-icon">🔒</span><span class="card-title">Layer 3 — Config Guard</span><span class="badge badge-warn">MANUAL</span></div><div class="tnode opt"><div class="dot"></div>config_guard.py</div><div class="tindent"><div class="tnode opt"><div class="dot"></div>Watches openclaw.json every 30s</div><div class="tnode opt"><div class="dot"></div>Compares vs master.json 444</div><div class="tnode opt"><div class="dot"></div>On tamper: restore + restart + alert</div></div></div><div class="card c-red"><div class="card-head"><span class="card-icon">🛡</span><span class="card-title">File Locks</span><span class="badge badge-ok">ALWAYS ON</span></div><div class="tnode on"><div class="dot"></div>openclaw.master.json → 444</div><div class="tnode on"><div class="dot"></div>oc_brain.py → 444</div><div class="tnode on"><div class="dot"></div>scraper/rotator.py → 444</div><div class="tnode on"><div class="dot"></div>scraper/key_pool.json → 400</div></div></div></div><div id="tab-boot" class="panel"><div class="sec"><div class="sec-line"></div><div class="sec-title">Boot Order — autostart.sh</div><div class="sec-line"></div></div><div class="callout">Run: <strong>bash ~/autostart.sh</strong> — single command that starts everything.</div><div style="margin-top:20px;"><div class="card c-blue" style="margin-bottom:12px;"><div class="card-head"><span class="card-icon">1️⃣</span><span class="card-title">Kill All Processes</span></div><div class="cmd"><span class="prompt">$</span>pkill -f openclaw-gateway || true
+  <div class="tab" onclick="show('capacity')">Capacity</div>
+  <div class="tab" onclick="show('brain')">Brain</div></div><div id="tab-overview" class="panel active"><div class="sec"><div class="sec-line"></div><div class="sec-title">System Flow</div><div class="sec-line"></div></div><div class="flow"><div class="fnode n-tg"><span class="icon">📱</span><span class="name">Telegram</span><span class="sub">@Sebastianoo_bot</span></div><div class="farr">→</div><div class="fnode n-gw"><span class="icon">🦰</span><span class="name">Gateway</span><span class="sub">ws://127.0.0.1:18789</span></div><div class="farr">→</div><div class="fnode n-mem"><span class="icon">🔍</span><span class="name">Memory Recall</span><span class="sub">QMD vector search</span></div><div class="farr">→</div><div class="fnode n-ai"><span class="icon">🤖</span><span class="name">AI Model</span><span class="sub">openrouter/free</span></div><div class="farr">→</div><div class="fnode n-mem"><span class="icon">💾</span><span class="name">Memory Save</span><span class="sub">background</span></div><div class="farr">→</div><div class="fnode n-tg"><span class="icon">📤</span><span class="name">Reply</span><span class="sub">Telegram</span></div></div><div class="sec"><div class="sec-line"></div><div class="sec-title">Core Components</div><div class="sec-line"></div></div><div class="grid"><div class="card c-purple"><div class="card-head"><span class="card-icon">🦰</span><span class="card-title">OpenClaw Gateway</span><span class="badge badge-ok" id="gw-badge">LIVE</span></div><div class="row"><span class="lbl">Process</span><span class="val ok">openclaw gateway run</span></div><div class="row"><span class="lbl">Port</span><span class="val">18789 WebSocket</span></div><div class="row"><span class="lbl">Telegram</span><span class="val ok">connected</span></div><div class="row"><span class="lbl">mem0 plugin</span><span class="val warn">DISABLED</span></div><div class="row"><span class="lbl">memory.backend</span><span class="val ok">qmd</span></div></div><div class="card c-green"><div class="card-head"><span class="card-icon">🧠</span><span class="card-title">OC Brain</span><span class="badge badge-ok">RUNNING</span></div><div class="row"><span class="lbl">Process</span><span class="val ok">python3 ~/oc_brain.py</span></div><div class="row"><span class="lbl">Dashboard</span><span class="val">127.0.0.1:18800</span></div><div class="row"><span class="lbl">Gateway check</span><span class="val">every 30s</span></div><div class="row"><span class="lbl">API key test</span><span class="val">every 2 hours</span></div><div id="live-cap-inject"></div><div class="row"><span class="lbl">429 cooldown</span><span class="val warn">2 hours</span></div><div class="row"><span class="lbl">Alert critical</span><span class="val err">5 keys</span></div></div><div class="card c-blue"><div class="card-head"><span class="card-icon">🕷</span><span class="card-title">Scraper System</span><span class="badge badge-ok">RUNNING</span></div><div class="row"><span class="lbl">API server</span><span class="val ok">:5001 server.py</span></div><div class="row"><span class="lbl">Browser keys</span><span class="val">14 Browserless</span></div><div class="row"><span class="lbl">Capacity</span><span class="val">7,000 req/hour</span></div><div class="row"><span class="lbl">key_pool.json</span><span class="val warn">locked 400</span></div></div><div class="card c-teal"><div class="card-head"><span class="card-icon">📊</span><span class="card-title">Dashboards</span><span class="badge badge-ok">RUNNING</span></div><div class="row"><span class="lbl">Brain dash</span><span class="val ok">:18800</span></div><div class="row"><span class="lbl">Combined</span><span class="val ok">:18801</span></div><div class="row"><span class="lbl">Main dash</span><span class="val ok">:8765/brain</span></div><div class="row"><span class="lbl">GitHub Pages</span><span class="val bl">molbot85.github.io</span></div><div class="row"><span class="lbl">Tunnel</span><span class="val warn">on demand only</span></div></div></div><div class="sec"><div class="sec-line"></div><div class="sec-title">71 API Providers</div><div class="sec-line"></div></div><div class="grid-3"><div class="card c-yellow"><div class="card-head"><span class="card-icon">⭐</span><span class="card-title">OpenRouter 35 keys</span><span class="badge badge-ok">PRIMARY</span></div><div class="row"><span class="lbl">Model</span><span class="val ok live-val" id="primary-val">openrouter/free</span></div><div class="row"><span class="lbl">Chat keys</span><span class="val hi">openrouter-1 to 10, 17-35</span></div><div class="row"><span class="lbl">mem0_llm pool</span><span class="val bl">openrouter-11 to 19</span></div><div class="row"><span class="lbl">Auto-picks</span><span class="val ok">best free model</span></div><div class="pills"><span class="pill pill-ok">stepfun/step-3.5-flash</span><span class="pill pill-hi">auto-rotates</span></div></div><div class="card c-blue"><div class="card-head"><span class="card-icon">💙</span><span class="card-title">Gemini 36 keys</span><span class="badge badge-blue">POOL + CHAT</span></div><div class="row"><span class="lbl">Chat keys</span><span class="val bl">gemini-19 to 36</span></div><div class="row"><span class="lbl">Embed pools</span><span class="val warn">gemini-1 to 18</span></div><div class="row"><span class="lbl">Chat model</span><span class="val ok">gemini-2.5-flash-lite</span></div><div class="row"><span class="lbl">Embed API</span><span class="val">gemini-embedding-001</span></div><div class="pills"><span class="pill pill-warn">1-18: embed only</span><span class="pill pill-ok">19-36: chat</span></div></div><div class="card c-teal"><div class="card-head"><span class="card-icon">🔗</span><span class="card-title">Memory Pools</span><span class="badge badge-blue">DEDICATED</span></div><div id="live-pools-inject"></div><div class="row"><span class="lbl">qmd_embed</span><span class="val bl">gemini-1,2,7,8,13,14</span></div><div class="row"><span class="lbl">mem0_embedder</span><span class="val bl">gemini-3,4,9,10,15,16</span></div><div class="row"><span class="lbl">web_search</span><span class="val bl">gemini-5,6,11,12,17,18</span></div><div class="row"><span class="lbl">mem0_llm</span><span class="val hi">openrouter-11 to 19</span></div><div class="callout green" style="margin-top:10px;font-size:.68em;">Pool keys EXCLUDED from chat fallbacks</div></div></div><div class="sec"><div class="sec-line"></div><div class="sec-title">Protection Layers</div><div class="sec-line"></div></div><div class="grid-2"><div class="card c-green"><div class="card-head"><span class="card-icon">🐕</span><span class="card-title">Layer 1 — OC Brain</span><span class="badge badge-ok">ACTIVE</span></div><div class="tnode on"><div class="dot"></div>Gateway alive check every 30s</div><div class="tnode on"><div class="dot"></div>Auto-restart on death</div><div class="tnode on"><div class="dot"></div>71 API keys tested every 2h</div><div class="tnode on"><div class="dot"></div>429 cooldown 2h management</div><div class="tnode on"><div class="dot"></div>Telegram alerts (batched)</div><div class="tnode on"><div class="dot"></div>save_oc only on real change</div></div><div class="card c-orange"><div class="card-head"><span class="card-icon">🔧</span><span class="card-title">Layer 2 — Watchdog</span><span class="badge badge-warn">MANUAL</span></div><div class="tnode opt"><div class="dot"></div>openclaw-watchdog.sh</div><div class="tindent"><div class="tnode opt"><div class="dot"></div>Gateway health every 30s</div><div class="tnode opt"><div class="dot"></div>2 failures triggers fix</div><div class="tnode opt"><div class="dot"></div>Fixes primary on failure</div></div></div><div class="card c-purple"><div class="card-head"><span class="card-icon">🔒</span><span class="card-title">Layer 3 — Config Guard</span><span class="badge badge-warn">MANUAL</span></div><div class="tnode opt"><div class="dot"></div>config_guard.py</div><div class="tindent"><div class="tnode opt"><div class="dot"></div>Watches openclaw.json every 30s</div><div class="tnode opt"><div class="dot"></div>Compares vs master.json 444</div><div class="tnode opt"><div class="dot"></div>On tamper: restore + restart + alert</div></div></div><div class="card c-red"><div class="card-head"><span class="card-icon">🛡</span><span class="card-title">File Locks</span><span class="badge badge-ok">ALWAYS ON</span></div><div class="tnode on"><div class="dot"></div>openclaw.master.json → 444</div><div class="tnode on"><div class="dot"></div>oc_brain.py → 444</div><div class="tnode on"><div class="dot"></div>scraper/rotator.py → 444</div><div class="tnode on"><div class="dot"></div>scraper/key_pool.json → 400</div></div></div></div><div id="tab-boot" class="panel"><div class="sec"><div class="sec-line"></div><div class="sec-title">Boot Order — autostart.sh</div><div class="sec-line"></div></div><div class="callout">Run: <strong>bash ~/autostart.sh</strong> — single command that starts everything.</div><div style="margin-top:20px;"><div class="card c-blue" style="margin-bottom:12px;"><div class="card-head"><span class="card-icon">1️⃣</span><span class="card-title">Kill All Processes</span></div><div class="cmd"><span class="prompt">$</span>pkill -f openclaw-gateway || true
 <span class="prompt">$</span>pkill -f oc_brain || true</div><div class="tnode on"><div class="dot"></div>All pkills have || true — safe with set -euo pipefail</div></div><div class="card c-purple" style="margin-bottom:12px;"><div class="card-head"><span class="card-icon">2️⃣</span><span class="card-title">Sync Providers from Master</span></div><div class="cmd"><span class="prompt">$</span>python3 -c "sync providers + channels + tools from master → openclaw.json"</div><div class="tnode on"><div class="dot"></div>Restores API keys and security from locked master</div><div class="tnode on"><div class="dot"></div>Does NOT restore primary/fallbacks — select-primary handles that</div></div><div class="card c-purple" style="margin-bottom:12px;"><div class="card-head"><span class="card-icon">3️⃣</span><span class="card-title">Start Gateway</span></div><div class="cmd"><span class="prompt">$</span>nohup openclaw gateway run > /dev/null 2>&1 &</div><div class="tnode on"><div class="dot"></div>Uses "run" — required for Termux environment</div><div class="tnode on"><div class="dot"></div>Waits in loop up to 60s until port 18789 responds</div></div><div class="card c-yellow" style="margin-bottom:12px;"><div class="card-head"><span class="card-icon">4️⃣</span><span class="card-title">Wait for Gateway Ready</span></div><div class="cmd"><span class="prompt">$</span>for i in $(seq 1 30); do curl -s http://127.0.0.1:18789/health | grep -q "ok" && break; sleep 2; done</div><div class="tnode on"><div class="dot"></div>Polls every 2s — gateway ready in ~22 seconds</div><div class="tnode on"><div class="dot"></div>Brain only starts AFTER this</div></div><div class="card c-green" style="margin-bottom:12px;"><div class="card-head"><span class="card-icon">5️⃣</span><span class="card-title">Select Primary Model</span></div><div class="cmd"><span class="prompt">$</span>timeout 30 python3 ~/oc_brain.py --select-primary || true</div><div class="tnode on"><div class="dot"></div>Reads brain_state.json — skips keys in 429 cooldown</div><div class="tnode on"><div class="dot"></div>Tests fallbacks in order — picks first working key</div><div class="tnode on"><div class="dot"></div>30s timeout — never blocks boot</div></div><div class="card c-green" style="margin-bottom:12px;"><div class="card-head"><span class="card-icon">6️⃣</span><span class="card-title">Start Brain + Scraper + Dashboard</span></div><div class="cmd"><span class="prompt">$</span>nohup python3 ~/oc_brain.py > /dev/null 2>&1 &
 <span class="prompt">$</span>cd ~/scraper && bash start_dashboards.sh || true
 <span class="prompt">$</span>nohup python3 ~/dashboard_server.py > /dev/null 2>&1 &</div></div><div class="card c-teal" style="margin-bottom:12px;"><div class="card-head"><span class="card-icon">7️⃣</span><span class="card-title">Tunnel (On Demand Only)</span></div><div class="cmd"><span class="prompt">$</span>bash ~/tunnel_keeper.sh</div><div class="tnode opt"><div class="dot"></div>NOT in autostart — run manually when needed</div><div class="tnode opt"><div class="dot"></div>Sends public URL to Telegram automatically</div></div></div><div class="sec"><div class="sec-line"></div><div class="sec-title">If Something Breaks</div><div class="sec-line"></div></div><div class="grid-2"><div class="card c-orange"><div class="card-head"><span class="card-icon">🔄</span><span class="card-title">Gateway Lock Issue</span></div><div class="cmd-label">Symptom: "gateway already running"</div><div class="cmd"><span class="prompt">$</span>openclaw gateway stop && sleep 2
@@ -745,6 +746,271 @@ setInterval(function(){
   <div class="cap-chip chip-red">⚠ OpenRouter: 7% capacity, unreliable tools</div>
   <div class="cap-chip chip-green">✓ Gemini: 93% capacity, reliable</div>
   <div class="cap-chip chip-green">✓ 1M token context on Gemini</div>
+</div>
+
+</div>
+</div>
+
+
+<div id="tab-brain" class="panel">
+<style>
+/* ── BRAIN DIAGRAM STYLES ─────────────────────────────────── */
+.bd-wrap{position:relative;z-index:10;padding:0 16px 40px}
+.bd-sec{margin:20px 0 10px;font-family:var(--mono);font-size:.58em;letter-spacing:4px;color:var(--dim);text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.bd-sec::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(124,77,255,.3),transparent)}
+
+/* ── 1. MESSAGE FLOW — animated nodes ─────────────────────── */
+.mflow{display:flex;flex-direction:column;gap:0;align-items:center;margin:16px 0}
+.mf-node{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px;position:relative;transition:all .3s}
+.mf-node::before{content:'';position:absolute;top:0;left:0;right:0;height:1px}
+.mf-tg::before{background:linear-gradient(90deg,transparent,#29b6f6,transparent);box-shadow:0 0 8px rgba(41,182,246,.4)}
+.mf-gw::before{background:linear-gradient(90deg,transparent,var(--purple),transparent);box-shadow:0 0 8px rgba(124,77,255,.4)}
+.mf-mem::before{background:linear-gradient(90deg,transparent,var(--teal),transparent);box-shadow:0 0 8px rgba(0,229,255,.4)}
+.mf-ai::before{background:linear-gradient(90deg,transparent,var(--yellow),transparent);box-shadow:0 0 8px rgba(255,215,64,.4)}
+.mf-save::before{background:linear-gradient(90deg,transparent,var(--green),transparent);box-shadow:0 0 8px rgba(0,230,118,.4)}
+.mf-icon{font-size:1.6em;flex-shrink:0}
+.mf-info{flex:1}
+.mf-title{font-family:var(--mono);font-size:.72em;letter-spacing:2px;color:var(--text)}
+.mf-sub{font-family:var(--mono);font-size:.6em;color:var(--dim);margin-top:2px}
+.mf-badge{font-family:var(--mono);font-size:.55em;padding:2px 8px;border-radius:6px;letter-spacing:1px}
+.mf-arrow{display:flex;align-items:center;justify-content:center;height:28px;position:relative}
+.mf-arrow::before{content:'';position:absolute;left:50%;width:1px;height:100%;background:linear-gradient(180deg,var(--border2),transparent)}
+.mf-arrow::after{content:'▼';color:var(--purple);font-size:.7em;position:relative;z-index:1;animation:arrow-pulse 2s ease-in-out infinite}
+@keyframes arrow-pulse{0%,100%{opacity:.4;transform:translateY(-2px)}50%{opacity:1;transform:translateY(2px)}}
+.mf-time{font-family:var(--mono);font-size:.55em;color:var(--dim);text-align:right;flex-shrink:0}
+
+/* ── 2. MEMORY SYSTEM — circuit board style ───────────────── */
+.mem-circuit{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;margin:10px 0;position:relative;overflow:hidden}
+.mem-circuit::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.015) 1px,transparent 1px);background-size:20px 20px;pointer-events:none}
+.mem-title{font-family:var(--mono);font-size:.65em;letter-spacing:3px;color:var(--teal);margin-bottom:12px;position:relative;z-index:1}
+.mem-pools{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:relative;z-index:1}
+.mem-pool{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px;position:relative}
+.mem-pool::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;border-radius:2px}
+.mp-qmd::before{background:var(--teal);box-shadow:0 0 6px var(--teal)}
+.mp-mem::before{background:var(--purple);box-shadow:0 0 6px var(--purple)}
+.mp-web::before{background:var(--blue);box-shadow:0 0 6px var(--blue)}
+.mp-llm::before{background:var(--yellow);box-shadow:0 0 6px var(--yellow)}
+.mp-exec::before{background:var(--green);box-shadow:0 0 6px var(--green)}
+.mem-pool-name{font-family:var(--mono);font-size:.62em;letter-spacing:2px;color:var(--text);margin-bottom:4px;padding-left:8px}
+.mem-pool-keys{font-family:var(--mono);font-size:.55em;color:var(--dim);padding-left:8px}
+.mem-pool-count{font-family:var(--mono);font-size:.9em;font-weight:700;padding-left:8px}
+.mem-flow-line{display:flex;align-items:center;gap:6px;margin:10px 0;position:relative;z-index:1}
+.mem-flow-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;animation:dot-blink 2s ease-in-out infinite}
+@keyframes dot-blink{0%,100%{opacity:.3}50%{opacity:1}}
+.mem-flow-label{font-family:var(--mono);font-size:.6em;color:var(--dim);letter-spacing:1px}
+.mem-flow-line-bar{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+
+/* ── 3. KEY ROTATION — timeline style ────────────────────── */
+.rot-timeline{position:relative;padding-left:24px;margin:10px 0}
+.rot-timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--purple),var(--teal),var(--green))}
+.rot-step{position:relative;margin-bottom:14px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:8px}
+.rot-step::before{content:'';position:absolute;left:-20px;top:50%;transform:translateY(-50%);width:10px;height:10px;border-radius:50%;border:2px solid}
+.rs-check::before{background:var(--green);border-color:var(--green);box-shadow:0 0 8px var(--green)}
+.rs-warn::before{background:var(--yellow);border-color:var(--yellow);box-shadow:0 0 8px var(--yellow)}
+.rs-crit::before{background:#dc143c;border-color:#dc143c;box-shadow:0 0 8px #dc143c}
+.rs-info::before{background:var(--purple);border-color:var(--purple);box-shadow:0 0 8px var(--purple)}
+.rot-step-title{font-family:var(--mono);font-size:.68em;letter-spacing:2px;color:var(--text);margin-bottom:4px}
+.rot-step-desc{font-family:var(--mono);font-size:.58em;color:var(--dim);line-height:1.6}
+.rot-step-code{font-family:var(--mono);font-size:.58em;color:var(--teal);background:var(--bg3);padding:3px 8px;border-radius:4px;margin-top:4px;display:inline-block}
+
+/* ── 4. PROTECTION LAYERS — concentric rings ─────────────── */
+.prot-rings{display:flex;flex-direction:column;gap:0;margin:10px 0}
+.prot-ring{border-radius:10px;padding:12px 14px;margin:4px 0;position:relative;overflow:hidden}
+.pr-1{background:linear-gradient(135deg,rgba(0,230,118,.06),rgba(0,230,118,.02));border:1px solid rgba(0,230,118,.3)}
+.pr-2{background:linear-gradient(135deg,rgba(255,145,0,.06),rgba(255,145,0,.02));border:1px solid rgba(255,145,0,.3)}
+.pr-3{background:linear-gradient(135deg,rgba(41,182,246,.06),rgba(41,182,246,.02));border:1px solid rgba(41,182,246,.3)}
+.pr-4{background:linear-gradient(135deg,rgba(124,77,255,.06),rgba(124,77,255,.02));border:1px solid rgba(124,77,255,.3)}
+.pr-5{background:linear-gradient(135deg,rgba(220,20,60,.06),rgba(220,20,60,.02));border:1px solid rgba(220,20,60,.3)}
+.prot-ring-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.prot-ring-num{font-family:var(--mono);font-size:.6em;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700}
+.pr-1 .prot-ring-num{background:rgba(0,230,118,.15);color:var(--green);border:1px solid rgba(0,230,118,.4)}
+.pr-2 .prot-ring-num{background:rgba(255,145,0,.15);color:var(--orange);border:1px solid rgba(255,145,0,.4)}
+.pr-3 .prot-ring-num{background:rgba(41,182,246,.15);color:var(--blue);border:1px solid rgba(41,182,246,.4)}
+.pr-4 .prot-ring-num{background:rgba(124,77,255,.15);color:#b388ff;border:1px solid rgba(124,77,255,.4)}
+.pr-5 .prot-ring-num{background:rgba(220,20,60,.15);color:#dc143c;border:1px solid rgba(220,20,60,.4)}
+.prot-ring-title{font-family:var(--mono);font-size:.68em;letter-spacing:2px;color:var(--text);flex:1}
+.prot-ring-status{font-family:var(--mono);font-size:.55em;padding:2px 6px;border-radius:5px}
+.prot-ring-desc{font-family:var(--mono);font-size:.58em;color:var(--dim);line-height:1.7;padding-left:32px}
+.prot-ring-desc span{color:var(--text-dim)}
+</style>
+
+<div class="bd-wrap">
+
+<!-- ① MESSAGE FLOW -->
+<div class="bd-sec">① Message Flow</div>
+<div class="mflow">
+  <div class="mf-node mf-tg">
+    <span class="mf-icon">📱</span>
+    <div class="mf-info">
+      <div class="mf-title">TELEGRAM</div>
+      <div class="mf-sub">@Sebastianoo_bot · Chemical.Black sends message</div>
+    </div>
+    <span class="mf-time">t=0ms</span>
+  </div>
+  <div class="mf-arrow"></div>
+  <div class="mf-node mf-gw">
+    <span class="mf-icon">🦀</span>
+    <div class="mf-info">
+      <div class="mf-title">GATEWAY</div>
+      <div class="mf-sub">OpenClaw · port 18789 · receives &amp; routes</div>
+    </div>
+    <span class="mf-time">~200ms</span>
+  </div>
+  <div class="mf-arrow"></div>
+  <div class="mf-node mf-mem">
+    <span class="mf-icon">🔍</span>
+    <div class="mf-info">
+      <div class="mf-title">MEMORY RECALL</div>
+      <div class="mf-sub">QMD vector search · semantic context loaded</div>
+    </div>
+    <span class="mf-time">~500ms</span>
+  </div>
+  <div class="mf-arrow"></div>
+  <div class="mf-node mf-ai">
+    <span class="mf-icon">🤖</span>
+    <div class="mf-info">
+      <div class="mf-title">AI MODEL</div>
+      <div class="mf-sub">Primary key · openrouter/free or gemini-2.5-flash-lite</div>
+    </div>
+    <span class="mf-time">~2-8s</span>
+  </div>
+  <div class="mf-arrow"></div>
+  <div class="mf-node mf-save">
+    <span class="mf-icon">💾</span>
+    <div class="mf-info">
+      <div class="mf-title">MEMORY SAVE</div>
+      <div class="mf-sub">background · memory_engine.py · MEMORY.md updated</div>
+    </div>
+    <span class="mf-time">async</span>
+  </div>
+  <div class="mf-arrow"></div>
+  <div class="mf-node mf-tg">
+    <span class="mf-icon">📤</span>
+    <div class="mf-info">
+      <div class="mf-title">REPLY SENT</div>
+      <div class="mf-sub">Telegram · message delivered to Chemical.Black</div>
+    </div>
+    <span class="mf-time">~3-9s</span>
+  </div>
+</div>
+
+<!-- ② MEMORY SYSTEM -->
+<div class="bd-sec">② Memory System</div>
+<div class="mem-circuit">
+  <div class="mem-title">POOL ARCHITECTURE · circuit view</div>
+  <div class="mem-pools">
+    <div class="mem-pool mp-qmd">
+      <div class="mem-pool-name">QMD EMBED</div>
+      <div class="mem-pool-count" style="color:var(--teal)">6 keys</div>
+      <div class="mem-pool-keys">gemini 1,2,7,8,13,14</div>
+    </div>
+    <div class="mem-pool mp-mem">
+      <div class="mem-pool-name">MEM0 EMBED</div>
+      <div class="mem-pool-count" style="color:var(--purple)">6 keys</div>
+      <div class="mem-pool-keys">gemini 3,4,9,10,15,16</div>
+    </div>
+    <div class="mem-pool mp-web">
+      <div class="mem-pool-name">WEB SEARCH</div>
+      <div class="mem-pool-count" style="color:var(--blue)">6 keys</div>
+      <div class="mem-pool-keys">gemini 5,6,11,12,17,18</div>
+    </div>
+    <div class="mem-pool mp-llm">
+      <div class="mem-pool-name">MEM0 LLM</div>
+      <div class="mem-pool-count" style="color:var(--yellow)">7 keys</div>
+      <div class="mem-pool-keys">openrouter 11-19</div>
+    </div>
+    <div class="mem-pool mp-exec" style="grid-column:1/-1">
+      <div class="mem-pool-name">EXEC POOL ⚡</div>
+      <div class="mem-pool-count" style="color:var(--green)">1 key</div>
+      <div class="mem-pool-keys">gemini-37 · guaranteed function calling</div>
+    </div>
+  </div>
+  <div class="mem-flow-line" style="margin-top:14px">
+    <div class="mem-flow-dot" style="background:var(--green)"></div>
+    <div class="mem-flow-label">MEMORY.md → QMD indexes → semantic search on recall</div>
+    <div class="mem-flow-line-bar"></div>
+  </div>
+  <div class="mem-flow-line">
+    <div class="mem-flow-dot" style="background:var(--purple);animation-delay:.5s"></div>
+    <div class="mem-flow-label">Conversation → mem0_llm extracts facts → stored</div>
+    <div class="mem-flow-line-bar"></div>
+  </div>
+  <div class="mem-flow-line">
+    <div class="mem-flow-dot" style="background:var(--teal);animation-delay:1s"></div>
+    <div class="mem-flow-label">Session resets: daily 4AM or 120min idle</div>
+    <div class="mem-flow-line-bar"></div>
+  </div>
+</div>
+
+<!-- ③ KEY ROTATION -->
+<div class="bd-sec">③ Key Rotation Logic</div>
+<div class="rot-timeline">
+  <div class="rot-step rs-info">
+    <div class="rot-step-title">BOOT — select-primary</div>
+    <div class="rot-step-desc">On every boot, oc_brain.py --select-primary tests fallbacks in order, skips keys in cooldown, picks first working key as primary.</div>
+    <div class="rot-step-code">timeout 30 python3 ~/oc_brain.py --select-primary</div>
+  </div>
+  <div class="rot-step rs-check">
+    <div class="rot-step-title">EVERY 30s — gateway health</div>
+    <div class="rot-step-desc">check_gateway() verifies process is alive. check_model_errors() scans log for 3+ failures on same key within 3 minutes → triggers immediate primary switch.</div>
+  </div>
+  <div class="rot-step rs-warn">
+    <div class="rot-step-title">ON 429 — smart cooldown</div>
+    <div class="rot-step-desc">Key rests until next midnight UTC (OpenRouter) or midnight Pacific (Gemini). Not a fixed 2h — actual quota reset time. Next working fallback becomes primary automatically.</div>
+  </div>
+  <div class="rot-step rs-info">
+    <div class="rot-step-title">EVERY 2h — API check cycle</div>
+    <div class="rot-step-desc">run_api_check() tests all 74 providers. Gemini embed keys skipped (tested via embed API). OpenRouter tested every 6h to save quota. Recovered keys re-enter rotation.</div>
+  </div>
+  <div class="rot-step rs-check">
+    <div class="rot-step-title">AUTO-RESCUE — pool health</div>
+    <div class="rot-step-desc">If mem0_llm pool key fails, brain automatically replaces it with a working openrouter key from outside the pool. Pool stays healthy without manual intervention.</div>
+  </div>
+</div>
+
+<!-- ④ PROTECTION LAYERS -->
+<div class="bd-sec">④ Protection Layers</div>
+<div class="prot-rings">
+  <div class="prot-ring pr-1">
+    <div class="prot-ring-head">
+      <div class="prot-ring-num">1</div>
+      <div class="prot-ring-title">OC BRAIN — Primary Supervisor</div>
+      <span class="prot-ring-status" style="background:rgba(0,230,118,.1);color:var(--green);border:1px solid rgba(0,230,118,.2)">ALWAYS ON</span>
+    </div>
+    <div class="prot-ring-desc"><span>oc_brain.py</span> · Gateway check every 30s · Auto-restart on death · 74 key tests every 2h · Smart cooldown · Telegram alerts · push_to_github every 2h</div>
+  </div>
+  <div class="prot-ring pr-2">
+    <div class="prot-ring-head">
+      <div class="prot-ring-num">2</div>
+      <div class="prot-ring-title">GATEWAY WATCHDOG</div>
+      <span class="prot-ring-status" style="background:rgba(255,145,0,.1);color:var(--orange);border:1px solid rgba(255,145,0,.2)">MANUAL</span>
+    </div>
+    <div class="prot-ring-desc"><span>openclaw-watchdog.sh</span> · Health check port 18789 · 2 failures triggers fix · Detects 429 quota errors · Fixes primary on failure</div>
+  </div>
+  <div class="prot-ring pr-3">
+    <div class="prot-ring-head">
+      <div class="prot-ring-num">3</div>
+      <div class="prot-ring-title">SCRAPER WATCHDOG</div>
+      <span class="prot-ring-status" style="background:rgba(41,182,246,.1);color:var(--blue);border:1px solid rgba(41,182,246,.2)">ALWAYS ON</span>
+    </div>
+    <div class="prot-ring-desc"><span>scraper/watchdog.sh</span> · Monitors ports 18800 + 18801 · Restarts dashboards if dead · Log rotation over 1MB</div>
+  </div>
+  <div class="prot-ring pr-4">
+    <div class="prot-ring-head">
+      <div class="prot-ring-num">4</div>
+      <div class="prot-ring-title">CONFIG GUARD</div>
+      <span class="prot-ring-status" style="background:rgba(124,77,255,.1);color:#b388ff;border:1px solid rgba(124,77,255,.2)">MANUAL</span>
+    </div>
+    <div class="prot-ring-desc"><span>config_guard.py</span> · Watches openclaw.json every 30s · Compares vs master.json 444 · Protects botToken, allowFrom, tools.exec · On tamper: restore + restart + alert</div>
+  </div>
+  <div class="prot-ring pr-5">
+    <div class="prot-ring-head">
+      <div class="prot-ring-num">5</div>
+      <div class="prot-ring-title">FILE LOCKS</div>
+      <span class="prot-ring-status" style="background:rgba(220,20,60,.1);color:#dc143c;border:1px solid rgba(220,20,60,.2)">ALWAYS ON</span>
+    </div>
+    <div class="prot-ring-desc"><span>master.json 444</span> · <span>oc_brain.py 444</span> · <span>rotator.py 444</span> · <span>key_pool.json 400</span> · Cannot be written by anyone including Sebastian</div>
+  </div>
 </div>
 
 </div>
