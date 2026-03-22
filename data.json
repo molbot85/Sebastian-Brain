@@ -1,11 +1,11 @@
 {
   "gateway": {
     "up": true,
-    "pid": "6855"
+    "pid": "14124"
   },
   "primary": "openrouter-9/openrouter/free",
   "chat_active": 11,
-  "chat_total": 31,
+  "chat_total": 33,
   "resting": [
     {
       "name": "openrouter-13",
@@ -22,6 +22,18 @@
     {
       "name": "openrouter-23",
       "until": 1774210584.1237972
+    },
+    {
+      "name": "openrouter-1",
+      "until": 1774212342.880922
+    },
+    {
+      "name": "openrouter-28",
+      "until": 1774212342.880922
+    },
+    {
+      "name": "openrouter-8",
+      "until": 1774212342.880922
     }
   ],
   "pools": {
@@ -38,21 +50,21 @@
       "total": 6
     },
     "mem0_llm": {
-      "healthy": 3,
+      "healthy": 1,
       "total": 7
+    },
+    "exec_pool": {
+      "healthy": 1,
+      "total": 1
     }
   },
   "recent_logs": [
     {
-      "msg": "{\"subsystem\":\"memory\"}",
+      "msg": "{\"subsystem\":\"gateway/reload\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"gateway\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"memory\"}",
+      "msg": "{\"subsystem\":\"gateway/reload\"}",
       "time": "2026-03-"
     },
     {
@@ -64,10 +76,14 @@
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[33mfetch fallback: enabling sticky IPv4-only dispatcher (codes=ETIMEDOUT,ENETUNREACH)\u001b[39m",
+      "msg": "{\"subsystem\":\"gateway/reload\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"gateway/reload\"}",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774205285.0149689,
-  "pushed_at_str": "2026-03-22 20:48:05"
+  "pushed_at": 1774208191.8533576,
+  "pushed_at_str": "2026-03-22 21:36:31"
 }
