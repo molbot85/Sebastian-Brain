@@ -1,41 +1,12 @@
 {
   "gateway": {
     "up": true,
-    "pid": "2970"
+    "pid": "16608"
   },
-  "primary": "openrouter-13/openrouter/free",
+  "primary": "openrouter-11/openrouter/free",
   "chat_active": 21,
   "chat_total": 31,
-  "resting": [
-    {
-      "name": "openrouter-11",
-      "until": 1774173393.997592
-    },
-    {
-      "name": "openrouter-12",
-      "until": 1774173393.997592
-    },
-    {
-      "name": "openrouter-16",
-      "until": 1774173393.997592
-    },
-    {
-      "name": "openrouter-10",
-      "until": 1774173949.4587939
-    },
-    {
-      "name": "openrouter-6",
-      "until": 1774173949.4587939
-    },
-    {
-      "name": "openrouter-21",
-      "until": 1774175121.5790253
-    },
-    {
-      "name": "openrouter-33",
-      "until": 1774175121.5790253
-    }
-  ],
+  "resting": [],
   "pools": {
     "qmd_embed": {
       "healthy": 3,
@@ -56,30 +27,30 @@
   },
   "recent_logs": [
     {
-      "msg": "{\"subsystem\":\"memory\"}",
+      "msg": "{\"subsystem\":\"gateway/reload\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"memory\"}",
+      "msg": "{\"subsystem\":\"gateway/reload\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"memory\"}",
+      "msg": "[tools] edit failed: Could not find the exact text in ~/.openclaw/openclaw.json. The old text must match exactly includi",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"memory\"}",
+      "msg": "[tools] edit failed: Could not find the exact text in ~/.openclaw/openclaw.json. The old text must match exactly includi",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"tools\"}",
+      "msg": "[tools] read failed: ENOENT: no such file or directory, access '/data/data/com.termux/files/home/.openclaw/master.opencl",
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[33mfetch fallback: enabling sticky IPv4-only dispatcher (codes=ETIMEDOUT,ENETUNREACH)\u001b[39m",
+      "msg": "[tools] read failed: ENOENT: no such file or directory, access '/data/data/com.termux/files/home/.openclaw/master.opencl",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774171484.9391026,
-  "pushed_at_str": "2026-03-22 11:24:44"
+  "pushed_at": 1774175245.3712704,
+  "pushed_at_str": "2026-03-22 12:27:25"
 }
