@@ -1,11 +1,11 @@
 {
   "gateway": {
     "up": true,
-    "pid": "14124"
+    "pid": "20480"
   },
   "primary": "openrouter-9/openrouter/free",
-  "chat_active": 11,
-  "chat_total": 33,
+  "chat_active": 23,
+  "chat_total": 48,
   "resting": [
     {
       "name": "openrouter-13",
@@ -34,6 +34,18 @@
     {
       "name": "openrouter-8",
       "until": 1774212342.880922
+    },
+    {
+      "name": "gemini-37",
+      "until": 1774215261.7423444
+    },
+    {
+      "name": "openrouter-15",
+      "until": 1774215261.7423444
+    },
+    {
+      "name": "openrouter-16",
+      "until": 1774215261.7423444
     }
   ],
   "pools": {
@@ -50,7 +62,7 @@
       "total": 6
     },
     "mem0_llm": {
-      "healthy": 1,
+      "healthy": 2,
       "total": 7
     },
     "exec_pool": {
@@ -58,32 +70,7 @@
       "total": 1
     }
   },
-  "recent_logs": [
-    {
-      "msg": "{\"subsystem\":\"gateway/reload\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"gateway/reload\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"memory\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"memory\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"gateway/reload\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"gateway/reload\"}",
-      "time": "2026-03-"
-    }
-  ],
-  "pushed_at": 1774208191.8533576,
-  "pushed_at_str": "2026-03-22 21:36:31"
+  "recent_logs": [],
+  "pushed_at": 1774210361.9371471,
+  "pushed_at_str": "2026-03-22 22:12:41"
 }
