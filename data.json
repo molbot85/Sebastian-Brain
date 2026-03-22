@@ -1,12 +1,33 @@
 {
   "gateway": {
     "up": true,
-    "pid": "16608"
+    "pid": "7859"
   },
-  "primary": "openrouter-11/openrouter/free",
-  "chat_active": 20,
+  "primary": "openrouter-13/openrouter/free",
+  "chat_active": 18,
   "chat_total": 31,
-  "resting": [],
+  "resting": [
+    {
+      "name": "openrouter-15",
+      "until": 1774189558.9688349
+    },
+    {
+      "name": "openrouter-20",
+      "until": 1774189558.9688349
+    },
+    {
+      "name": "openrouter-24",
+      "until": 1774189558.9688349
+    },
+    {
+      "name": "openrouter-30",
+      "until": 1774189558.9688349
+    },
+    {
+      "name": "openrouter-7",
+      "until": 1774189558.9688349
+    }
+  ],
   "pools": {
     "qmd_embed": {
       "healthy": 3,
@@ -21,7 +42,7 @@
       "total": 6
     },
     "mem0_llm": {
-      "healthy": 4,
+      "healthy": 3,
       "total": 7
     }
   },
@@ -35,22 +56,22 @@
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[34m[tools]\u001b[39m \u001b[33mtools.profile (coding) allowlist contains unknown entries (apply_patch, memory_search, memory_get",
+      "msg": "\u001b[33m[agent/embedded]\u001b[39m \u001b[33membedded run agent end: runId=0baaa1cb-2260-4b72-bb1c-b576960ec35b isError=true model=op",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"tools\"}",
+      "msg": "{\"subsystem\":\"agent/embedded\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "[tools] exec failed: exec denied: allowlist miss",
+      "msg": "\u001b[33m[agent/embedded]\u001b[39m \u001b[33membedded run agent end: runId=0baaa1cb-2260-4b72-bb1c-b576960ec35b isError=true model=op",
       "time": "2026-03-"
     },
     {
-      "msg": "[tools] exec failed: exec denied: allowlist miss",
+      "msg": "{\"subsystem\":\"agent/embedded\"}",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774182478.6281047,
-  "pushed_at_str": "2026-03-22 14:27:58"
+  "pushed_at": 1774186050.2673943,
+  "pushed_at_str": "2026-03-22 15:27:30"
 }
