@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="30">
+<title>Sebastian — Live Brain</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700;800&display=swap');
+:root{--bg:#020408;--bg2:#060c14;--bg3:#0a1420;--border:#0d2035;--border2:#1a3a55;--cyan:#00d4ff;--cyan2:#00ffcc;--green:#00ff88;--red:#ff3355;--yellow:#ffcc00;--purple:#aa55ff;--orange:#ff8800;--text:#c8e8ff;--dim:#3a6080;--mono:'Share Tech Mono',monospace;--sans:'Syne',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;overflow-x:hidden;cursor:crosshair}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.12) 2px,rgba(0,0,0,.12) 4px);pointer-events:none;z-index:9999}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.025) 1px,transparent 1px);background-size:32px 32px;z-index:0}
+.orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;animation:orb-drift 20s ease-in-out infinite alternate}
+.orb-1{width:400px;height:400px;background:rgba(0,212,255,.04);top:-100px;left:-100px}
+.orb-2{width:300px;height:300px;background:rgba(0,255,136,.03);bottom:-50px;right:-50px;animation-delay:-10s}
+@keyframes orb-drift{from{transform:translate(0,0)}to{transform:translate(40px,30px)}}
+.header{position:relative;z-index:10;padding:28px 24px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.h-title{font-family:var(--sans);font-size:clamp(1.4em,4vw,2.2em);font-weight:800;letter-spacing:-1px;background:linear-gradient(135deg,var(--cyan),var(--cyan2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:none}
+.h-sub{font-family:var(--mono);font-size:.6em;color:var(--dim);margin-top:4px;letter-spacing:3px}
+.h-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.pill{display:flex;align-items:center;gap:7px;padding:5px 12px;border-radius:16px;font-family:var(--mono);font-size:.62em;letter-spacing:2px;border:1px solid}
+.pill-on{border-color:rgba(0,255,136,.3);color:var(--green);background:rgba(0,255,136,.05)}
+.pill-off{border-color:rgba(255,51,85,.3);color:var(--red);background:rgba(255,51,85,.05)}
+.pill-src{border-color:rgba(0,212,255,.2);color:var(--cyan);background:rgba(0,212,255,.04)}
+.dot{width:7px;height:7px;border-radius:50%}
+.dot-on{background:var(--green);box-shadow:0 0 8px var(--green);animation:pdot 2s infinite}
+.dot-off{background:var(--red);box-shadow:0 0 8px var(--red)}
+@keyframes pdot{0%,100%{opacity:1}50%{opacity:.4}}
+.ts{font-family:var(--mono);font-size:.58em;color:var(--dim);letter-spacing:1px}
+.rbtn{padding:5px 12px;border:1px solid var(--border2);border-radius:6px;background:var(--bg2);color:var(--dim);font-family:var(--mono);font-size:.6em;letter-spacing:2px;cursor:pointer;transition:all .2s}
+.rbtn:hover{border-color:var(--cyan);color:var(--cyan)}
+.rbtn.sp{animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.main{position:relative;z-index:10;padding:18px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1400px;margin:0 auto}
+@media(max-width:1000px){.main{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.main{grid-template-columns:1fr}}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:18px;position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s;animation:cin .4s ease both}
+.card:hover{border-color:var(--border2);box-shadow:0 0 20px rgba(0,212,255,.04)}
+@keyframes cin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px}
+.cc::before{background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
+.cg::before{background:linear-gradient(90deg,transparent,var(--green),transparent)}
+.cr::before{background:linear-gradient(90deg,transparent,var(--red),transparent)}
+.cy::before{background:linear-gradient(90deg,transparent,var(--yellow),transparent)}
+.cp::before{background:linear-gradient(90deg,transparent,var(--purple),transparent)}
+.co::before{background:linear-gradient(90deg,transparent,var(--orange),transparent)}
+.clabel{font-family:var(--mono);font-size:.58em;letter-spacing:4px;color:var(--dim);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.clabel::after{content:'';flex:1;height:1px;background:var(--border)}
+.s3{grid-column:1/-1}.s2{grid-column:span 2}
+@media(max-width:1000px){.s3,.s2{grid-column:1/-1}}
+.gw-row{display:flex;align-items:center;gap:14px}
+.gw-ico{font-size:2.2em;filter:drop-shadow(0 0 10px rgba(0,212,255,.5))}
+.gw-state{font-family:var(--mono);font-size:1.3em;letter-spacing:3px;font-weight:700}
+.gw-up{color:var(--green);text-shadow:0 0 14px rgba(0,255,136,.5)}
+.gw-dn{color:var(--red);text-shadow:0 0 14px rgba(255,51,85,.5)}
+.gw-pid{font-family:var(--mono);font-size:.62em;color:var(--dim);margin-top:3px}
+.model-val{font-family:var(--mono);font-size:.9em;color:var(--cyan);word-break:break-all;line-height:1.5}
+.model-sub{font-family:var(--mono);font-size:.6em;color:var(--dim);margin-top:4px;letter-spacing:2px}
+.cap-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.cap-big{font-family:var(--mono);font-size:2.2em;font-weight:700;color:var(--green);text-shadow:0 0 18px rgba(0,255,136,.4);line-height:1}
+.cap-tot{font-family:var(--mono);font-size:.7em;color:var(--dim)}
+.bar{height:5px;background:var(--bg3);border-radius:3px;overflow:hidden;margin:6px 0}
+.bfill{height:100%;border-radius:3px;transition:width 1s cubic-bezier(.4,0,.2,1);position:relative}
+.bfill::after{content:'';position:absolute;top:0;right:0;width:20px;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25));animation:shim 2s infinite}
+@keyframes shim{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
+.bhi{background:linear-gradient(90deg,var(--green),var(--cyan2))}
+.bmd{background:linear-gradient(90deg,var(--yellow),var(--orange))}
+.blo{background:linear-gradient(90deg,var(--red),var(--orange))}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pname{font-family:var(--mono);font-size:.58em;color:var(--dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:3px}
+.pnum{font-family:var(--mono);font-size:.9em;margin-bottom:3px}
+.pbar{height:3px;background:var(--bg3);border-radius:2px;overflow:hidden}
+.pfill{height:100%;border-radius:2px;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.pfg{background:var(--green);box-shadow:0 0 5px rgba(0,255,136,.4)}
+.pfy{background:var(--yellow)}
+.pfr{background:var(--red)}
+.rlist{display:flex;flex-direction:column;gap:5px;max-height:170px;overflow-y:auto}
+.rlist::-webkit-scrollbar{width:2px}
+.rlist::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+.ritem{display:flex;justify-content:space-between;padding:5px 9px;background:var(--bg3);border-radius:5px;border:1px solid var(--border);font-family:var(--mono);font-size:.65em}
+.rname{color:var(--text)}
+.rtime{color:var(--yellow)}
+.rempty{font-family:var(--mono);font-size:.7em;color:var(--green);text-align:center;padding:14px;border:1px dashed rgba(0,255,136,.2);border-radius:7px;letter-spacing:2px}
+.llist{display:flex;flex-direction:column;gap:3px;max-height:150px;overflow-y:auto}
+.llist::-webkit-scrollbar{width:2px}
+.llist::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+.litem{display:flex;gap:10px;font-family:var(--mono);font-size:.6em;padding:4px 0;border-bottom:1px solid var(--border);line-height:1.4}
+.litem:last-child{border-bottom:none}
+.ltime{color:var(--dim);flex-shrink:0}
+.lmsg{color:var(--text);opacity:.65;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ticker{font-family:var(--mono);font-size:.58em;color:var(--dim);letter-spacing:1px;padding:10px 0 0;border-top:1px solid var(--border);margin-top:10px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.loading{display:flex;align-items:center;justify-content:center;gap:10px;padding:40px;color:var(--dim);font-family:var(--mono);font-size:.72em;letter-spacing:3px}
+.ldots span{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:bl 1.2s infinite}
+.ldots span:nth-child(2){animation-delay:.2s}
+.ldots span:nth-child(3){animation-delay:.4s}
+@keyframes bl{0%,80%,100%{opacity:.1}40%{opacity:1}}
+.errmsg{font-family:var(--mono);font-size:.68em;color:var(--red);text-align:center;padding:20px;border:1px dashed rgba(255,51,85,.2);border-radius:8px;letter-spacing:1px;line-height:1.8}
+.card:nth-child(1){animation-delay:.05s}.card:nth-child(2){animation-delay:.1s}.card:nth-child(3){animation-delay:.15s}.card:nth-child(4){animation-delay:.2s}.card:nth-child(5){animation-delay:.25s}.card:nth-child(6){animation-delay:.3s}.card:nth-child(7){animation-delay:.35s}
+</style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="header">
+  <div>
+    <div class="h-title">&#9889; SEBASTIAN BRAIN</div>
+    <div class="h-sub">Chemical.Black &middot; Live Status &middot; Auto-refresh 30s</div>
+  </div>
+  <div class="h-right">
+    <div id="src-badge" class="pill pill-src"><span class="dot" style="background:var(--cyan)"></span>LOADING</div>
+    <span class="ts" id="ts">--:--:--</span>
+    <button class="rbtn" id="rbtn" onclick="load(true)">&#8635; REFRESH</button>
+    <div id="gw-pill" class="pill pill-off"><div class="dot dot-off"></div>OFFLINE</div>
+  </div>
+</div>
+<div class="main" id="grid">
+  <div class="card cc s3"><div class="loading"><div class="ldots"><span></span><span></span><span></span></div>INITIALIZING NEURAL LINK</div></div>
+</div>
+<script>
+const GH='https://raw.githubusercontent.com/molbot85/Sebastian-Brain/main/data.json';
+const LOCAL='http://127.0.0.1:18800/dashboard-data';
+let last=null,timer=null;
+function ago(ts){const m=Math.round((ts-Date.now()/1000)/60);return m<=0?'now':Math.abs(m)+'m';}
+function pc(h,t){return Math.round(h/t*100);}
+function pfc(h,t){const p=h/t;return p>=.8?'pfg':p>=.5?'pfy':'pfr';}
+function pnc(h,t){const p=h/t;return p>=.8?'var(--green)':p>=.5?'var(--yellow)':'var(--red)';}
+function bfc(a,t){const p=a/t;return p>=.7?'bhi':p>=.4?'bmd':'blo';}
+function render(d,src){
+  last=d;
+  const now=new Date();
+  document.getElementById('ts').textContent=now.toLocaleTimeString();
+  const sb=document.getElementById('src-badge');
+  if(src==='live'){sb.className='pill pill-on';sb.innerHTML='<div class="dot dot-on"></div>LIVE';}
+  else if(src==='cached'){sb.className='pill pill-src';sb.innerHTML='<span class="dot" style="background:var(--yellow)"></span>CACHED';}
+  else{sb.className='pill pill-off';sb.innerHTML='<div class="dot dot-off"></div>ERROR';}
+  const gp=document.getElementById('gw-pill');
+  const up=d.gateway&&d.gateway.up;
+  gp.className=up?'pill pill-on':'pill pill-off';
+  gp.innerHTML=up?'<div class="dot dot-on"></div>ONLINE':'<div class="dot dot-off"></div>OFFLINE';
+  const rest=d.resting||[];const pools=d.pools||{};const logs=d.recent_logs||[];
+  const pri=d.primary||'unknown';const ca=d.chat_active||0;const ct=d.chat_total||31;
+  const pid=d.gateway?d.gateway.pid:'—';const pct=pc(ca,ct);
+  const pushed=d.pushed_at_str||'unknown';
+  document.getElementById('grid').innerHTML=`
+<div class="card ${up?'cc':'cr'}">
+  <div class="clabel">Gateway</div>
+  <div class="gw-row">
+    <div class="gw-ico">${up?'🦀':'💀'}</div>
+    <div>
+      <div class="gw-state ${up?'gw-up':'gw-dn'}">${up?'ONLINE':'OFFLINE'}</div>
+      <div class="gw-pid">PID: ${pid} &nbsp;·&nbsp; :18789 WebSocket</div>
+      ${!up?'<div style="font-family:var(--mono);font-size:.62em;color:var(--red);margin-top:6px;">→ bash ~/autostart.sh</div>':''}
+    </div>
+  </div>
+  <div class="ticker"><span>mem0: DISABLED</span><span>backend: qmd</span><span>OpenClaw 2026.3.13</span></div>
+</div>
+<div class="card cc">
+  <div class="clabel">Active Model</div>
+  <div class="model-val">${pri.split('/').pop()}</div>
+  <div class="model-sub">${pri.split('/')[0]} &nbsp;·&nbsp; openrouter/free</div>
+  <div class="ticker"><span>fallbacks: 39</span><span>select-primary: on boot</span></div>
+</div>
+<div class="card ${pct>=70?'cg':pct>=40?'cy':'cr'}">
+  <div class="clabel">Chat Capacity</div>
+  <div class="cap-row"><div class="cap-big">${ca}</div><div class="cap-tot">/ ${ct} &nbsp; ${pct}%</div></div>
+  <div class="bar"><div class="bfill ${bfc(ca,ct)}" style="width:${pct}%"></div></div>
+  <div class="ticker"><span>resting: ${rest.length}</span><span>cooldown: 2h</span><span>alert: ≤5</span></div>
+</div>
+<div class="card cp s2">
+  <div class="clabel">Memory Pools</div>
+  <div class="pgrid">
+    ${Object.entries(pools).map(([r,i])=>`
+    <div>
+      <div class="pname">${r.replace(/_/g,' ')}</div>
+      <div class="pnum" style="color:${pnc(i.healthy,i.total)}">${i.healthy}<span style="color:var(--dim)">/${i.total}</span></div>
+      <div class="pbar"><div class="pfill ${pfc(i.healthy,i.total)}" style="width:${pc(i.healthy,i.total)}%"></div></div>
+    </div>`).join('')}
+  </div>
+  <div class="ticker"><span>gemini 1-18: embed only</span><span>OR 11-19: mem0_llm</span></div>
+</div>
+<div class="card cy">
+  <div class="clabel">Resting (${rest.length})</div>
+  ${rest.length===0?'<div class="rempty">ALL KEYS ACTIVE</div>':
+    `<div class="rlist">${rest.map(k=>`<div class="ritem"><span class="rname">${k.name}</span><span class="rtime">~${ago(k.until)}</span></div>`).join('')}</div>`}
+</div>
+<div class="card co s3">
+  <div class="clabel">Recent Activity</div>
+  <div class="llist">
+    ${logs.slice(0,8).map(l=>`<div class="litem"><span class="ltime">${l.time}</span><span class="lmsg">${l.msg.substring(0,130)}</span></div>`).join('')||'<div style="font-family:var(--mono);font-size:.68em;color:var(--dim)">No recent activity</div>'}
+  </div>
+  <div class="ticker"><span>source: ${src.toUpperCase()}</span><span>data pushed: ${pushed}</span><span>auto-refresh: 30s live / 5min cached</span></div>
+</div>`;
+}
+async function load(manual=false){
+  const btn=document.getElementById('rbtn');
+  btn.classList.add('sp');
+  try{
+    try{
+      const r=await fetch(LOCAL,{signal:AbortSignal.timeout(3000)});
+      if(!r.ok)throw new Error();
+      render(await r.json(),'live');
+      clearInterval(timer);timer=setInterval(()=>load(),30000);
+      return;
+    }catch(e){}
+    try{
+      const r=await fetch(GH+'?t='+Date.now(),{signal:AbortSignal.timeout(8000)});
+      if(!r.ok)throw new Error();
+      render(await r.json(),'cached');
+      clearInterval(timer);timer=setInterval(()=>load(),300000);
+      return;
+    }catch(e){throw new Error('both failed');}
+  }catch(err){
+    document.getElementById('src-badge').className='pill pill-off';
+    document.getElementById('src-badge').innerHTML='<div class="dot dot-off"></div>ERROR';
+    if(!last)document.getElementById('grid').innerHTML='<div class="card cr s3"><div class="errmsg">NEURAL LINK SEVERED<br><br>Cannot reach local API (:18800) or GitHub cache<br><br><span style="color:var(--dim)">→ Ensure Sebastian is running on local WiFi<br>→ Or wait for oc_brain.py to push data.json to GitHub</span></div></div>';
+  }finally{btn.classList.remove('sp');}
+}
+load();
+</script>
+</body>
+</html>
