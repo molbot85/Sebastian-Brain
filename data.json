@@ -4,7 +4,7 @@
     "pid": "16608"
   },
   "primary": "openrouter-11/openrouter/free",
-  "chat_active": 21,
+  "chat_active": 20,
   "chat_total": 31,
   "resting": [],
   "pools": {
@@ -21,7 +21,7 @@
       "total": 6
     },
     "mem0_llm": {
-      "healthy": 5,
+      "healthy": 4,
       "total": 7
     }
   },
@@ -35,22 +35,22 @@
       "time": "2026-03-"
     },
     {
-      "msg": "[tools] edit failed: Could not find the exact text in ~/.openclaw/openclaw.json. The old text must match exactly includi",
+      "msg": "\u001b[34m[tools]\u001b[39m \u001b[33mtools.profile (coding) allowlist contains unknown entries (apply_patch, memory_search, memory_get",
       "time": "2026-03-"
     },
     {
-      "msg": "[tools] edit failed: Could not find the exact text in ~/.openclaw/openclaw.json. The old text must match exactly includi",
+      "msg": "{\"subsystem\":\"tools\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "[tools] read failed: ENOENT: no such file or directory, access '/data/data/com.termux/files/home/.openclaw/master.opencl",
+      "msg": "[tools] exec failed: exec denied: allowlist miss",
       "time": "2026-03-"
     },
     {
-      "msg": "[tools] read failed: ENOENT: no such file or directory, access '/data/data/com.termux/files/home/.openclaw/master.opencl",
+      "msg": "[tools] exec failed: exec denied: allowlist miss",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774175245.3712704,
-  "pushed_at_str": "2026-03-22 12:27:25"
+  "pushed_at": 1774182478.6281047,
+  "pushed_at_str": "2026-03-22 14:27:58"
 }
