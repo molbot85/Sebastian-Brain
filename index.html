@@ -580,109 +580,174 @@ setInterval(function(){
 </script>
 
 <div id="tab-capacity" class="panel">
+<style>
+.cap-wrap{position:relative;z-index:10;padding:0 16px 40px}
+.cap-hero{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.cap-hero-full{grid-column:1/-1}
+.cap-stat{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;position:relative;overflow:hidden}
+.cap-stat::before{content:'';position:absolute;top:0;left:0;right:0;height:1px}
+.cap-stat.s-cyan::before{background:linear-gradient(90deg,transparent,var(--cyan),transparent);box-shadow:0 0 8px var(--cyan)}
+.cap-stat.s-green::before{background:linear-gradient(90deg,transparent,var(--green),transparent);box-shadow:0 0 8px var(--green)}
+.cap-stat.s-yellow::before{background:linear-gradient(90deg,transparent,var(--yellow),transparent);box-shadow:0 0 8px var(--yellow)}
+.cap-stat.s-purple::before{background:linear-gradient(90deg,transparent,var(--purple),transparent);box-shadow:0 0 8px var(--purple)}
+.cap-lbl{font-family:var(--mono);font-size:.55em;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:4px}
+.cap-num{font-family:var(--mono);font-size:1.6em;font-weight:700;line-height:1.1}
+.cap-sub{font-family:var(--mono);font-size:.52em;color:var(--dim);margin-top:3px;letter-spacing:1px}
+.cap-block{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px;position:relative;overflow:hidden}
+.cap-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px}
+.cap-block.b-cyan::before{background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
+.cap-block.b-green::before{background:linear-gradient(90deg,transparent,var(--green),transparent)}
+.cap-block.b-purple::before{background:linear-gradient(90deg,transparent,var(--purple),transparent)}
+.cap-block.b-teal::before{background:linear-gradient(90deg,transparent,var(--teal),transparent)}
+.cap-block.b-blue::before{background:linear-gradient(90deg,transparent,var(--blue),transparent)}
+.cap-block-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.cap-block-icon{font-size:1.3em}
+.cap-block-title{font-family:var(--mono);font-size:.7em;letter-spacing:2px;color:var(--text);text-transform:uppercase;flex:1}
+.cap-block-badge{font-family:var(--mono);font-size:.58em;padding:2px 8px;border-radius:8px;letter-spacing:1px}
+.bg-ok{background:rgba(0,230,118,.1);color:var(--green);border:1px solid rgba(0,230,118,.2)}
+.bg-warn{background:rgba(220,20,60,.1);color:#dc143c;border:1px solid rgba(220,20,60,.2)}
+.bg-dim{background:rgba(124,77,255,.1);color:var(--purple2);border:1px solid rgba(124,77,255,.2)}
+.cap-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--text-faint);font-size:.72em}
+.cap-row:last-child{border-bottom:none}
+.cap-row .lbl{color:var(--dim)}
+.cap-row .val{color:var(--text);text-align:right;font-family:var(--mono)}
+.cap-row .val.ok{color:var(--green)}
+.cap-row .val.warn{color:#dc143c}
+.cap-row .val.hi{color:#b388ff}
+.cap-row .val.bl{color:var(--teal)}
+.cap-row .val.minus{color:#dc143c}
+.cap-bar-wrap{margin:8px 0 4px}
+.cap-bar-pct{font-family:var(--mono);font-size:.58em;color:var(--dim);text-align:right;margin-top:2px}
+.cap-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.cap-chip{font-family:var(--mono);font-size:.6em;padding:4px 10px;border-radius:6px;letter-spacing:1px}
+.chip-red{background:rgba(220,20,60,.08);color:#dc143c;border:1px solid rgba(220,20,60,.2)}
+.chip-green{background:rgba(0,230,118,.08);color:var(--green);border:1px solid rgba(0,230,118,.2)}
+.chip-yellow{background:rgba(255,215,64,.08);color:var(--yellow);border:1px solid rgba(255,215,64,.2)}
+.cap-grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cap-mini{background:var(--bg3);border-radius:6px;padding:10px;text-align:center}
+.cap-mini-num{font-family:var(--mono);font-size:1em;font-weight:700;color:var(--teal)}
+.cap-mini-lbl{font-family:var(--mono);font-size:.55em;color:var(--dim);letter-spacing:1px;margin-top:2px}
+</style>
 
 <div class="sec"><div class="sec-line"></div><div class="sec-title">Daily API Capacity</div><div class="sec-line"></div></div>
 
-<div style="position:relative;z-index:10;padding:0 20px 40px">
+<div class="cap-wrap">
 
-<!-- Summary cards -->
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px">
-
-  <div class="card cc" style="text-align:center">
-    <div class="clabel" style="justify-content:center">Total Net Chat</div>
-    <div style="font-family:var(--mono);font-size:2.4em;font-weight:700;color:var(--cyan);text-shadow:0 0 20px rgba(0,212,255,.5);line-height:1">19,164</div>
-    <div style="font-family:var(--mono);font-size:.6em;color:var(--dim);margin-top:6px;letter-spacing:2px">REQUESTS / DAY</div>
+<!-- Hero stats -->
+<div class="cap-hero">
+  <div class="cap-stat s-cyan cap-hero-full">
+    <div class="cap-lbl">Total Net Chat Requests</div>
+    <div class="cap-num" style="color:var(--cyan);text-shadow:0 0 16px rgba(0,212,255,.4)">19,164</div>
+    <div class="cap-sub">per day · all providers combined</div>
   </div>
-
-  <div class="card cg" style="text-align:center">
-    <div class="clabel" style="justify-content:center">Conversations</div>
-    <div style="font-family:var(--mono);font-size:2.4em;font-weight:700;color:var(--green);text-shadow:0 0 20px rgba(0,255,136,.5);line-height:1">1,916</div>
-    <div style="font-family:var(--mono);font-size:.6em;color:var(--dim);margin-top:6px;letter-spacing:2px">AT 10 MSGS EACH</div>
+  <div class="cap-stat s-green">
+    <div class="cap-lbl">Conversations</div>
+    <div class="cap-num" style="color:var(--green);text-shadow:0 0 14px rgba(0,255,136,.4)">1,916</div>
+    <div class="cap-sub">at 10 msgs each</div>
   </div>
-
-  <div class="card cy" style="text-align:center">
-    <div class="clabel" style="justify-content:center">Exec Pool</div>
-    <div style="font-family:var(--mono);font-size:2.4em;font-weight:700;color:var(--yellow);text-shadow:0 0 20px rgba(255,215,64,.5);line-height:1">1,000</div>
-    <div style="font-family:var(--mono);font-size:.6em;color:var(--dim);margin-top:6px;letter-spacing:2px">FUNCTION CALLS / DAY</div>
+  <div class="cap-stat s-purple">
+    <div class="cap-lbl">Exec Pool</div>
+    <div class="cap-num" style="color:#b388ff;text-shadow:0 0 14px rgba(124,77,255,.4)">1,000</div>
+    <div class="cap-sub">function calls/day</div>
   </div>
-
 </div>
 
-<!-- Detailed breakdown -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-
-  <div class="card cc">
-    <div class="card-head"><span class="card-icon">🤖</span><span class="card-title">OpenRouter Chat</span><span class="card-badge badge-ok">30 KEYS</span></div>
-    <div class="row"><span class="lbl">Gross total</span><span class="val ok">1,500 req/day</span></div>
-    <div class="row"><span class="lbl">Health checks</span><span class="val err">−120 req/day</span></div>
-    <div class="row"><span class="lbl">NET available</span><span class="val hi">1,380 req/day</span></div>
-    <div class="row"><span class="lbl">Per key quota</span><span class="val">50 req/day</span></div>
-    <div class="row"><span class="lbl">Context</span><span class="val bl">256k tokens</span></div>
-    <div class="row"><span class="lbl">Function calling</span><span class="val warn">UNRELIABLE</span></div>
-    <div class="row"><span class="lbl">Model</span><span class="val">openrouter/free</span></div>
-    <div class="row"><span class="lbl">Resets</span><span class="val">midnight UTC</span></div>
-    <div class="bar" style="margin-top:8px"><div class="bar-fill fill-g" style="width:7%"></div></div>
-    <div style="font-family:var(--mono);font-size:.6em;color:var(--dim);text-align:right">7% of total capacity</div>
+<!-- OpenRouter -->
+<div class="cap-block b-cyan">
+  <div class="cap-block-head">
+    <span class="cap-block-icon">🤖</span>
+    <span class="cap-block-title">OpenRouter Chat</span>
+    <span class="cap-block-badge bg-dim">30 KEYS</span>
   </div>
+  <div class="cap-row"><span class="lbl">Gross total</span><span class="val">1,500 req/day</span></div>
+  <div class="cap-row"><span class="lbl">Health checks</span><span class="val minus">−120 req/day</span></div>
+  <div class="cap-row"><span class="lbl">NET available</span><span class="val hi">1,380 req/day</span></div>
+  <div class="cap-row"><span class="lbl">Per key quota</span><span class="val">50 req/day</span></div>
+  <div class="cap-row"><span class="lbl">Context</span><span class="val bl">256k tokens</span></div>
+  <div class="cap-row"><span class="lbl">Function calling</span><span class="val warn">UNRELIABLE</span></div>
+  <div class="cap-row"><span class="lbl">Model</span><span class="val">openrouter/free</span></div>
+  <div class="cap-row"><span class="lbl">Resets</span><span class="val">midnight UTC</span></div>
+  <div class="cap-bar-wrap"><div class="bar"><div class="bar-fill blo" style="width:7%"></div></div></div>
+  <div class="cap-bar-pct">7% of total capacity</div>
+</div>
 
-  <div class="card cg">
-    <div class="card-head"><span class="card-icon">💎</span><span class="card-title">Gemini Chat</span><span class="card-badge badge-ok">18 KEYS</span></div>
-    <div class="row"><span class="lbl">Gross total</span><span class="val ok">18,000 req/day</span></div>
-    <div class="row"><span class="lbl">Health checks</span><span class="val err">−216 req/day</span></div>
-    <div class="row"><span class="lbl">NET available</span><span class="val ok">17,784 req/day</span></div>
-    <div class="row"><span class="lbl">Per key quota</span><span class="val">1,000 req/day</span></div>
-    <div class="row"><span class="lbl">Context</span><span class="val ok">1,000,000 tokens</span></div>
-    <div class="row"><span class="lbl">Function calling</span><span class="val ok">ALWAYS YES</span></div>
-    <div class="row"><span class="lbl">Model</span><span class="val">gemini-2.5-flash-lite</span></div>
-    <div class="row"><span class="lbl">Resets</span><span class="val">midnight Pacific</span></div>
-    <div class="bar" style="margin-top:8px"><div class="bar-fill fill-g" style="width:93%"></div></div>
-    <div style="font-family:var(--mono);font-size:.6em;color:var(--dim);text-align:right">93% of total capacity</div>
+<!-- Gemini -->
+<div class="cap-block b-green">
+  <div class="cap-block-head">
+    <span class="cap-block-icon">💎</span>
+    <span class="cap-block-title">Gemini Chat</span>
+    <span class="cap-block-badge bg-ok">18 KEYS</span>
   </div>
+  <div class="cap-row"><span class="lbl">Gross total</span><span class="val ok">18,000 req/day</span></div>
+  <div class="cap-row"><span class="lbl">Health checks</span><span class="val minus">−216 req/day</span></div>
+  <div class="cap-row"><span class="lbl">NET available</span><span class="val ok">17,784 req/day</span></div>
+  <div class="cap-row"><span class="lbl">Per key quota</span><span class="val">1,000 req/day</span></div>
+  <div class="cap-row"><span class="lbl">Context</span><span class="val ok">1,000,000 tokens</span></div>
+  <div class="cap-row"><span class="lbl">Function calling</span><span class="val ok">ALWAYS YES</span></div>
+  <div class="cap-row"><span class="lbl">Model</span><span class="val">gemini-2.5-flash-lite</span></div>
+  <div class="cap-row"><span class="lbl">Resets</span><span class="val">midnight Pacific</span></div>
+  <div class="cap-bar-wrap"><div class="bar"><div class="bar-fill bhi" style="width:93%"></div></div></div>
+  <div class="cap-bar-pct">93% of total capacity</div>
+</div>
 
-  <div class="card cp">
-    <div class="card-head"><span class="card-icon">⚡</span><span class="card-title">Exec Pool</span><span class="card-badge badge-warn">1 KEY</span></div>
-    <div class="row"><span class="lbl">NET available</span><span class="val hi">1,000 req/day</span></div>
-    <div class="row"><span class="lbl">Context</span><span class="val ok">1,000,000 tokens</span></div>
-    <div class="row"><span class="lbl">Function calling</span><span class="val ok">GUARANTEED</span></div>
-    <div class="row"><span class="lbl">Model</span><span class="val">gemini-2.5-flash-lite</span></div>
-    <div class="row"><span class="lbl">Purpose</span><span class="val bl">phone control · exec · files</span></div>
-    <div class="row"><span class="lbl">Status</span><span class="val warn">NEEDS MORE KEYS</span></div>
-    <div class="bar" style="margin-top:8px"><div class="bar-fill fill-y" style="width:15%"></div></div>
-    <div style="font-family:var(--mono);font-size:.6em;color:var(--yellow);text-align:right">add more Gemini keys to strengthen</div>
+<!-- Exec Pool -->
+<div class="cap-block b-purple">
+  <div class="cap-block-head">
+    <span class="cap-block-icon">⚡</span>
+    <span class="cap-block-title">Exec Pool</span>
+    <span class="cap-block-badge bg-warn">1 KEY</span>
   </div>
+  <div class="cap-row"><span class="lbl">NET available</span><span class="val hi">1,000 req/day</span></div>
+  <div class="cap-row"><span class="lbl">Context</span><span class="val ok">1,000,000 tokens</span></div>
+  <div class="cap-row"><span class="lbl">Function calling</span><span class="val ok">GUARANTEED</span></div>
+  <div class="cap-row"><span class="lbl">Model</span><span class="val">gemini-2.5-flash-lite</span></div>
+  <div class="cap-row"><span class="lbl">Purpose</span><span class="val bl">phone · exec · files</span></div>
+  <div class="cap-row"><span class="lbl">Status</span><span class="val warn">NEEDS MORE KEYS</span></div>
+</div>
 
-  <div class="card c-teal">
-    <div class="card-head"><span class="card-icon">🧠</span><span class="card-title">Memory Pools</span><span class="card-badge badge-ok">INTERNAL</span></div>
-    <div class="row"><span class="lbl">qmd_embed</span><span class="val bl">6 keys · 6,000/day</span></div>
-    <div class="row"><span class="lbl">mem0_embedder</span><span class="val bl">6 keys · 6,000/day</span></div>
-    <div class="row"><span class="lbl">web_search</span><span class="val bl">6 keys · 6,000/day</span></div>
-    <div class="row"><span class="lbl">mem0_llm</span><span class="val warn">7 keys · 350/day</span></div>
-    <div class="row"><span class="lbl">Total embed</span><span class="val ok">18,000 calls/day</span></div>
-    <div class="row"><span class="lbl">Not user-visible</span><span class="val">internal ops only</span></div>
+<!-- Memory Pools -->
+<div class="cap-block b-teal">
+  <div class="cap-block-head">
+    <span class="cap-block-icon">🧠</span>
+    <span class="cap-block-title">Memory Pools</span>
+    <span class="cap-block-badge bg-dim">INTERNAL</span>
   </div>
-
-  <div class="card c-blue" style="grid-column:span 2">
-    <div class="card-head"><span class="card-icon">🕷️</span><span class="card-title">Browserless Scraper</span><span class="card-badge badge-ok">14 KEYS</span></div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:8px">
-      <div><div class="pname">Capacity</div><div class="pnum" style="color:var(--blue)">7,000</div><div style="font-family:var(--mono);font-size:.6em;color:var(--dim)">req/hour</div></div>
-      <div><div class="pname">Daily est.</div><div class="pnum" style="color:var(--blue)">168,000</div><div style="font-family:var(--mono);font-size:.6em;color:var(--dim)">req/day</div></div>
-      <div><div class="pname">Keys</div><div class="pnum" style="color:var(--blue)">14</div><div style="font-family:var(--mono);font-size:.6em;color:var(--dim)">browserless</div></div>
-      <div><div class="pname">Purpose</div><div class="pnum" style="color:var(--blue);font-size:.7em">stealth web</div><div style="font-family:var(--mono);font-size:.6em;color:var(--dim)">scraping</div></div>
-    </div>
+  <div class="cap-grid2">
+    <div class="cap-mini"><div class="cap-mini-num">6,000</div><div class="cap-mini-lbl">qmd_embed/day</div></div>
+    <div class="cap-mini"><div class="cap-mini-num">6,000</div><div class="cap-mini-lbl">mem0_embed/day</div></div>
+    <div class="cap-mini"><div class="cap-mini-num">6,000</div><div class="cap-mini-lbl">web_search/day</div></div>
+    <div class="cap-mini"><div class="cap-mini-num" style="color:var(--yellow)">350</div><div class="cap-mini-lbl">mem0_llm/day</div></div>
   </div>
+  <div class="cap-row" style="margin-top:8px"><span class="lbl">Total embed</span><span class="val bl">18,000 calls/day</span></div>
+  <div class="cap-row"><span class="lbl">Not user-visible</span><span class="val">internal ops only</span></div>
+</div>
 
+<!-- Browserless -->
+<div class="cap-block b-blue">
+  <div class="cap-block-head">
+    <span class="cap-block-icon">🕷️</span>
+    <span class="cap-block-title">Browserless Scraper</span>
+    <span class="cap-block-badge bg-ok">14 KEYS</span>
+  </div>
+  <div class="cap-grid2">
+    <div class="cap-mini"><div class="cap-mini-num" style="color:var(--blue)">7,000</div><div class="cap-mini-lbl">req/hour</div></div>
+    <div class="cap-mini"><div class="cap-mini-num" style="color:var(--blue)">168k</div><div class="cap-mini-lbl">req/day est.</div></div>
+    <div class="cap-mini"><div class="cap-mini-num" style="color:var(--blue)">14</div><div class="cap-mini-lbl">keys</div></div>
+    <div class="cap-mini"><div class="cap-mini-num" style="color:var(--blue);font-size:.75em">stealth</div><div class="cap-mini-lbl">BQL active</div></div>
+  </div>
 </div>
 
 <!-- Weak points -->
 <div class="sec"><div class="sec-line"></div><div class="sec-title">Weak Points</div><div class="sec-line"></div></div>
-<div style="display:flex;flex-wrap:wrap;gap:8px">
-  <div style="background:rgba(255,82,82,.06);border:1px solid rgba(255,82,82,.2);border-radius:8px;padding:10px 14px;font-family:var(--mono);font-size:.68em;color:var(--red)">⚠ exec_pool: only 1 key — add more Gemini keys</div>
-  <div style="background:rgba(255,215,64,.06);border:1px solid rgba(255,215,64,.2);border-radius:8px;padding:10px 14px;font-family:var(--mono);font-size:.68em;color:var(--yellow)">⚠ mem0_llm: 350 calls/day — OpenRouter scarce</div>
-  <div style="background:rgba(255,82,82,.06);border:1px solid rgba(255,82,82,.2);border-radius:8px;padding:10px 14px;font-family:var(--mono);font-size:.68em;color:var(--red)">⚠ OpenRouter: only 7% of capacity — unreliable function calling</div>
-  <div style="background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.2);border-radius:8px;padding:10px 14px;font-family:var(--mono);font-size:.68em;color:var(--teal)">✓ Gemini dominates at 93% — reliable and massive</div>
+<div class="cap-chips">
+  <div class="cap-chip chip-red">⚠ exec_pool: only 1 key</div>
+  <div class="cap-chip chip-red">⚠ mem0_llm: 350 calls/day only</div>
+  <div class="cap-chip chip-red">⚠ OpenRouter: 7% capacity, unreliable tools</div>
+  <div class="cap-chip chip-green">✓ Gemini: 93% capacity, reliable</div>
+  <div class="cap-chip chip-green">✓ 1M token context on Gemini</div>
 </div>
 
 </div>
 </div>
 
-</body></html>
+</body>
