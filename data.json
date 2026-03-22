@@ -1,32 +1,12 @@
 {
   "gateway": {
     "up": true,
-    "pid": "24237"
+    "pid": "31853"
   },
-  "primary": "openrouter-18/openrouter/free",
-  "chat_active": 15,
+  "primary": "openrouter-12/openrouter/free",
+  "chat_active": 13,
   "chat_total": 31,
   "resting": [
-    {
-      "name": "openrouter-14",
-      "until": 1774196068.7849975
-    },
-    {
-      "name": "openrouter-26",
-      "until": 1774196068.7849975
-    },
-    {
-      "name": "openrouter-29",
-      "until": 1774196068.7849975
-    },
-    {
-      "name": "openrouter-31",
-      "until": 1774196068.7849975
-    },
-    {
-      "name": "openrouter-33",
-      "until": 1774196068.7849975
-    },
     {
       "name": "openrouter-2",
       "until": 1774200044.9225566
@@ -42,6 +22,30 @@
     {
       "name": "openrouter-28",
       "until": 1774202257.7053115
+    },
+    {
+      "name": "openrouter-10",
+      "until": 1774202584.4568932
+    },
+    {
+      "name": "openrouter-15",
+      "until": 1774202584.4568932
+    },
+    {
+      "name": "openrouter-17",
+      "until": 1774202584.4568932
+    },
+    {
+      "name": "openrouter-27",
+      "until": 1774202584.4568932
+    },
+    {
+      "name": "openrouter-3",
+      "until": 1774202584.4568932
+    },
+    {
+      "name": "openrouter-4",
+      "until": 1774202584.4568932
     }
   ],
   "pools": {
@@ -58,21 +62,17 @@
       "total": 6
     },
     "mem0_llm": {
-      "healthy": 4,
+      "healthy": 2,
       "total": 7
     }
   },
   "recent_logs": [
     {
-      "msg": "{\"subsystem\":\"gateway/channels/telegram\"}",
+      "msg": "\u001b[34m[tools]\u001b[39m \u001b[33mtools.profile (coding) allowlist contains unknown entries (apply_patch, memory_search, memory_get",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"gateway/channels/telegram\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"gateway/reload\"}",
+      "msg": "{\"subsystem\":\"tools\"}",
       "time": "2026-03-"
     },
     {
@@ -80,14 +80,18 @@
       "time": "2026-03-"
     },
     {
-      "msg": "[tools] read failed: ENOENT: no such file or directory, access '/data/data/com.termux/files/home/.openclaw/workspace/mem",
+      "msg": "{\"subsystem\":\"gateway/reload\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "[tools] read failed: ENOENT: no such file or directory, access '/data/data/com.termux/files/home/.openclaw/workspace/mem",
+      "msg": "[tools] exec failed: exec denied: allowlist miss",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "[tools] exec failed: exec denied: allowlist miss",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774195505.7376926,
-  "pushed_at_str": "2026-03-22 18:05:05"
+  "pushed_at": 1774196487.824454,
+  "pushed_at_str": "2026-03-22 18:21:27"
 }
