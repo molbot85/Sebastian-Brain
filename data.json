@@ -1,44 +1,12 @@
 {
   "gateway": {
     "up": true,
-    "pid": "9305"
+    "pid": "21731"
   },
-  "primary": "openrouter-18/openrouter/free",
+  "primary": "openrouter-16/openrouter/free",
   "chat_active": 16,
   "chat_total": 31,
   "resting": [
-    {
-      "name": "openrouter-1",
-      "until": 1774193099.4627917
-    },
-    {
-      "name": "openrouter-11",
-      "until": 1774193099.4627917
-    },
-    {
-      "name": "openrouter-21",
-      "until": 1774193099.4627917
-    },
-    {
-      "name": "openrouter-22",
-      "until": 1774193099.4627917
-    },
-    {
-      "name": "openrouter-3",
-      "until": 1774193099.4627917
-    },
-    {
-      "name": "openrouter-35",
-      "until": 1774193099.4627917
-    },
-    {
-      "name": "openrouter-4",
-      "until": 1774193099.4627917
-    },
-    {
-      "name": "openrouter-8",
-      "until": 1774193099.4627917
-    },
     {
       "name": "openrouter-14",
       "until": 1774196068.7849975
@@ -46,6 +14,26 @@
     {
       "name": "openrouter-26",
       "until": 1774196068.7849975
+    },
+    {
+      "name": "openrouter-29",
+      "until": 1774196068.7849975
+    },
+    {
+      "name": "openrouter-31",
+      "until": 1774196068.7849975
+    },
+    {
+      "name": "openrouter-33",
+      "until": 1774196068.7849975
+    },
+    {
+      "name": "openrouter-2",
+      "until": 1774200044.9225566
+    },
+    {
+      "name": "openrouter-6",
+      "until": 1774200044.9225566
     }
   ],
   "pools": {
@@ -62,36 +50,36 @@
       "total": 6
     },
     "mem0_llm": {
-      "healthy": 5,
+      "healthy": 6,
       "total": 7
     }
   },
   "recent_logs": [
     {
-      "msg": "{\"subsystem\":\"gateway/reload\"}",
+      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[36mdnsResultOrder=ipv4first (default-node22)\u001b[39m",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"gateway/reload\"}",
+      "msg": "{\"subsystem\":\"telegram/network\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[34m[tools]\u001b[39m \u001b[33mtools.profile (coding) allowlist contains unknown entries (apply_patch, memory_search, memory_get",
+      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[36mautoSelectFamily=true (default-node22)\u001b[39m",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"tools\"}",
+      "msg": "{\"subsystem\":\"telegram/network\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "[tools] exec failed: exec denied: allowlist miss",
+      "msg": "{\"subsystem\":\"memory\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "[tools] exec failed: exec denied: allowlist miss",
+      "msg": "{\"subsystem\":\"gateway\"}",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774192932.2993639,
-  "pushed_at_str": "2026-03-22 17:22:12"
+  "pushed_at": 1774195185.8342283,
+  "pushed_at_str": "2026-03-22 17:59:45"
 }
