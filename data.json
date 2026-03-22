@@ -1,10 +1,10 @@
 {
   "gateway": {
     "up": true,
-    "pid": "16626"
+    "pid": "16608"
   },
   "primary": "openrouter-13/openrouter/free",
-  "chat_active": 22,
+  "chat_active": 21,
   "chat_total": 31,
   "resting": [
     {
@@ -42,24 +42,12 @@
       "total": 6
     },
     "mem0_llm": {
-      "healthy": 3,
+      "healthy": 5,
       "total": 7
     }
   },
   "recent_logs": [
     {
-      "msg": "{\"subsystem\":\"memory\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"memory\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"memory\"}",
-      "time": "2026-03-"
-    },
-    {
       "msg": "{\"subsystem\":\"gateway/reload\"}",
       "time": "2026-03-"
     },
@@ -68,10 +56,22 @@
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[36mdnsResultOrder=ipv4first (default-node22)\u001b[39m",
+      "msg": "\u001b[34m[tools]\u001b[39m \u001b[33mtools.profile (coding) allowlist contains unknown entries (apply_patch, memory_search, memory_get",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"tools\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"memory\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"memory\"}",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774167854.656089,
-  "pushed_at_str": "2026-03-22 10:24:14"
+  "pushed_at": 1774168049.8019161,
+  "pushed_at_str": "2026-03-22 10:27:29"
 }
