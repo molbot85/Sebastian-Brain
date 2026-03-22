@@ -396,6 +396,85 @@ body{background:#010206!important;background-image:linear-gradient(rgba(0,212,25
   100% { top: 100vh; opacity: 0; }
 }
 
+
+/* ══ CRIMSON BLOOD MOON + SYMMETRY FIXES ════════════════════ */
+
+/* Replace yellow ambient with crimson blood moon */
+#ambient-glow.h-warn {
+  --gc: rgba(139,0,0,.45) !important;
+  --gc-line: rgba(180,20,20,1) !important;
+}
+#ambient-glow.h-warn::after {
+  box-shadow: 0 0 50px 10px rgba(139,0,0,.7),
+              0 0 150px 30px rgba(100,0,0,.3) !important;
+}
+#live-status-bar.sb-warn {
+  border-bottom: 1px solid rgba(139,0,0,.55) !important;
+  box-shadow: 0 0 25px rgba(139,0,0,.2), 0 4px 50px rgba(100,0,0,.1) !important;
+}
+
+/* Crimson for warning pool bars */
+.pmf-mid {
+  background: linear-gradient(90deg, #8b0000, #c41e3a, #dc143c) !important;
+  box-shadow:
+    0 0 12px 4px rgba(139,0,0,.7),
+    0 0 25px 8px rgba(139,0,0,.35),
+    0 0 50px 12px rgba(100,0,0,.18) !important;
+}
+.fill-medium, .bmd {
+  background: linear-gradient(90deg, #8b0000, #c41e3a, #dc143c) !important;
+  box-shadow: 0 0 12px 4px rgba(139,0,0,.65),
+              0 0 26px 8px rgba(139,0,0,.3) !important;
+}
+
+/* Resting pill warning color → crimson */
+.resting-pill {
+  border: 1px solid rgba(139,0,0,.4) !important;
+  color: #dc143c !important;
+  box-shadow: 0 0 10px rgba(139,0,0,.25),
+              inset 0 0 10px rgba(139,0,0,.05) !important;
+  text-shadow: 0 0 10px rgba(220,20,60,.5) !important;
+}
+
+/* ── TABS SYMMETRY FIX ─────────────────────────────────────── */
+.tabs {
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+@media(max-width:600px) {
+  .tabs { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ── CAPACITY TAB SYMMETRY ────────────────────────────────── */
+#tab-capacity .card {
+  min-height: unset !important;
+}
+#tab-capacity .row {
+  font-size: .72em !important;
+}
+#tab-capacity .card-title {
+  font-size: .68em !important;
+}
+#tab-capacity .pnum {
+  font-size: .85em !important;
+}
+
+/* Summary card numbers - consistent size */
+#tab-capacity .card > div[style*="2.4em"] {
+  font-size: 2em !important;
+}
+
+/* Capacity bars consistent */
+#tab-capacity .bar {
+  margin-top: 6px !important;
+  margin-bottom: 2px !important;
+}
+
+/* Weak points consistent padding */
+#tab-capacity > div > div:last-child > div {
+  font-size: .65em !important;
+  padding: 8px 12px !important;
+}
+
 </style></head><body><div id="ambient-glow"></div>
 <div class="sweep-beam"></div>
 <div class="sweep-beam-2"></div>
