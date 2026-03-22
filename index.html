@@ -34,22 +34,105 @@ body{background-image:linear-gradient(rgba(30,30,58,.3) 1px,transparent 1px),lin
 .resting-pill{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:8px;font-size:.62em;border:1px solid rgba(255,215,64,.2);color:var(--yellow);background:rgba(255,215,64,.04);font-family:var(--mono);margin:2px}
 
 
-#ambient-glow{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0;transition:opacity 3s ease}
-#ambient-glow::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,var(--gc,transparent) 0%,transparent 70%);animation:amb-breathe 4s ease-in-out infinite}
-#ambient-glow::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,var(--gc,transparent) 0%,transparent 60%);animation:amb-breathe 4s ease-in-out infinite;animation-delay:2s}
-@keyframes amb-breathe{0%,100%{opacity:.15}50%{opacity:.35}}
-#ambient-glow.h-ok{--gc:rgba(0,230,118,.1);opacity:1}
-#ambient-glow.h-warn{--gc:rgba(255,215,64,.1);opacity:1}
-#ambient-glow.h-crit{--gc:rgba(255,82,82,.14);opacity:1;animation:amb-alert 2s ease-in-out infinite}
-#ambient-glow.h-dead{--gc:rgba(255,82,82,.2);opacity:1;animation:amb-alert 1.2s ease-in-out infinite}
-@keyframes amb-alert{0%,100%{opacity:.6}50%{opacity:1}}
-#live-status-bar{transition:background 3s ease,border-color 3s ease}
-#live-status-bar.sb-ok{background:linear-gradient(90deg,var(--bg2),rgba(0,230,118,.04),var(--bg2))}
-#live-status-bar.sb-warn{background:linear-gradient(90deg,var(--bg2),rgba(255,215,64,.05),var(--bg2));border-bottom-color:rgba(255,215,64,.2)}
-#live-status-bar.sb-crit{background:linear-gradient(90deg,var(--bg2),rgba(255,82,82,.06),var(--bg2));border-bottom-color:rgba(255,82,82,.3);animation:sb-pulse 2s ease-in-out infinite}
-@keyframes sb-pulse{0%,100%{border-bottom-color:rgba(255,82,82,.2)}50%{border-bottom-color:rgba(255,82,82,.5)}}
-.af{animation:af-anim .5s ease-in-out 3}
-@keyframes af-anim{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* ══ AMBIENT HEALTH GLOW — STRONG ════════════════════════════ */
+#ambient-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+/* Bottom bloom — main glow source */
+#ambient-glow::before {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 70%;
+  background: radial-gradient(ellipse at center, var(--gc, transparent) 0%, transparent 65%);
+  animation: amb-breathe 3.5s ease-in-out infinite;
+}
+/* Top edge accent */
+#ambient-glow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, var(--gc-line, transparent) 40%, var(--gc-line, transparent) 60%, transparent 100%);
+  animation: line-breathe 3.5s ease-in-out infinite;
+  animation-delay: 1s;
+  box-shadow: 0 0 20px 2px var(--gc-line, transparent), 0 0 60px 4px var(--gc-line, transparent);
+}
+@keyframes amb-breathe {
+  0%,100% { opacity: .3; transform: translateX(-50%) scaleY(1); }
+  50%      { opacity: .65; transform: translateX(-50%) scaleY(1.08); }
+}
+@keyframes line-breathe {
+  0%,100% { opacity: .4; }
+  50%      { opacity: .9; }
+}
+
+/* Health states */
+#ambient-glow.h-ok {
+  --gc: rgba(0,230,118,.25);
+  --gc-line: rgba(0,230,118,.6);
+  opacity: 1;
+}
+#ambient-glow.h-warn {
+  --gc: rgba(255,215,64,.22);
+  --gc-line: rgba(255,215,64,.6);
+  opacity: 1;
+}
+#ambient-glow.h-crit {
+  --gc: rgba(255,82,82,.28);
+  --gc-line: rgba(255,82,82,.7);
+  opacity: 1;
+  animation: crit-pulse 2s ease-in-out infinite;
+}
+#ambient-glow.h-dead {
+  --gc: rgba(255,82,82,.35);
+  --gc-line: rgba(255,82,82,.9);
+  opacity: 1;
+  animation: crit-pulse 1s ease-in-out infinite;
+}
+@keyframes crit-pulse {
+  0%,100% { opacity: .7; }
+  50%      { opacity: 1; }
+}
+
+/* Pool bars — stronger glow on healthy */
+.pmf-ok  { background: linear-gradient(90deg,#00e676,#69f0ae); box-shadow: 0 0 8px rgba(0,230,118,.6), 0 0 16px rgba(0,230,118,.3); }
+.pmf-mid { background: linear-gradient(90deg,#ffd740,#ffab00); box-shadow: 0 0 8px rgba(255,215,64,.5); }
+.pmf-low { background: linear-gradient(90deg,#ff5252,#ff867f); box-shadow: 0 0 10px rgba(255,82,82,.7), 0 0 20px rgba(255,82,82,.3); animation: low-pulse 1.5s ease-in-out infinite; }
+@keyframes low-pulse { 0%,100%{box-shadow:0 0 8px rgba(255,82,82,.5)} 50%{box-shadow:0 0 18px rgba(255,82,82,.9), 0 0 30px rgba(255,82,82,.4)} }
+
+/* Capacity bar stronger */
+.fill-high   { background: linear-gradient(90deg,#00e676,#69f0ae); box-shadow: 0 0 10px rgba(0,230,118,.5); }
+.fill-medium { background: linear-gradient(90deg,#ffd740,#ff9100); box-shadow: 0 0 10px rgba(255,215,64,.4); }
+.fill-low    { background: linear-gradient(90deg,#ff5252,#ff867f); box-shadow: 0 0 10px rgba(255,82,82,.6); animation: low-pulse 1.5s ease-in-out infinite; }
+
+/* Status bar ambient */
+#live-status-bar { transition: background 2s ease, border-color 2s ease, box-shadow 2s ease; }
+#live-status-bar.sb-ok   { background: linear-gradient(90deg, var(--bg2), rgba(0,230,118,.06), var(--bg2)); border-bottom: 1px solid rgba(0,230,118,.25); box-shadow: 0 2px 20px rgba(0,230,118,.08); }
+#live-status-bar.sb-warn { background: linear-gradient(90deg, var(--bg2), rgba(255,215,64,.07), var(--bg2)); border-bottom: 1px solid rgba(255,215,64,.3); box-shadow: 0 2px 20px rgba(255,215,64,.1); }
+#live-status-bar.sb-crit { background: linear-gradient(90deg, var(--bg2), rgba(255,82,82,.09), var(--bg2)); border-bottom: 1px solid rgba(255,82,82,.4); box-shadow: 0 2px 24px rgba(255,82,82,.15); animation: sb-pulse 2s ease-in-out infinite; }
+@keyframes sb-pulse { 0%,100%{box-shadow:0 2px 16px rgba(255,82,82,.1)} 50%{box-shadow:0 2px 30px rgba(255,82,82,.25)} }
+
+/* Card top borders glow on health state */
+.card.h-warn::before { box-shadow: 0 0 12px rgba(255,215,64,.4); }
+.card.h-crit::before { animation: crit-border 2s ease-in-out infinite; }
+@keyframes crit-border { 0%,100%{opacity:.6} 50%{opacity:1} }
+
+/* Alert flash */
+.af { animation: af-anim .6s ease-in-out 4; }
+@keyframes af-anim { 0%,100%{opacity:1} 50%{opacity:.15} }
+
 
 </style></head><body><div id="ambient-glow"></div>
 <div class="cyber-orb cyber-orb-1"></div><div class="cyber-orb cyber-orb-2"></div>
