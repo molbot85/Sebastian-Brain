@@ -1,0 +1,93 @@
+{
+  "gateway": {
+    "up": true,
+    "pid": "8617"
+  },
+  "primary": "openrouter-13/openrouter/free",
+  "chat_active": 22,
+  "chat_total": 31,
+  "resting": [
+    {
+      "name": "openrouter-11",
+      "until": 1774173393.997592
+    },
+    {
+      "name": "openrouter-12",
+      "until": 1774173393.997592
+    },
+    {
+      "name": "openrouter-16",
+      "until": 1774173393.997592
+    },
+    {
+      "name": "openrouter-10",
+      "until": 1774173949.4587939
+    },
+    {
+      "name": "openrouter-6",
+      "until": 1774173949.4587939
+    }
+  ],
+  "pools": {
+    "qmd_embed": {
+      "healthy": 3,
+      "total": 6
+    },
+    "mem0_embedder": {
+      "healthy": 4,
+      "total": 6
+    },
+    "web_search": {
+      "healthy": 2,
+      "total": 6
+    },
+    "mem0_llm": {
+      "healthy": 3,
+      "total": 7
+    }
+  },
+  "recent_logs": [
+    {
+      "msg": "qmd update failed (Error: qmd update failed (code 1): node:internal/modules/cjs/loader:1865\n  return",
+      "time": "08:15:06"
+    },
+    {
+      "msg": "qmd update failed (Error: qmd update failed (code 1): node:internal/modules/cjs/loader:1865\n  return",
+      "time": "08:10:07"
+    },
+    {
+      "msg": "{'event': 'model_fallback_decision', 'tags': ['error_handling', 'model_fallback', 'candidate_succeed",
+      "time": "08:06:39"
+    },
+    {
+      "msg": "{'event': 'model_fallback_decision', 'tags': ['error_handling', 'model_fallback', 'candidate_failed'",
+      "time": "08:06:36"
+    },
+    {
+      "msg": "lane task error: lane=session:agent:main:telegram:direct:1737300067 durationMs=50566 error=\"Failover",
+      "time": "08:06:36"
+    },
+    {
+      "msg": "lane task error: lane=main durationMs=50473 error=\"FailoverError: \u26a0\ufe0f API rate limit reached. Please ",
+      "time": "08:06:36"
+    },
+    {
+      "msg": "{'event': 'embedded_run_failover_decision', 'tags': ['error_handling', 'failover', 'assistant', 'fal",
+      "time": "08:06:36"
+    },
+    {
+      "msg": "{'event': 'embedded_run_agent_end', 'tags': ['error_handling', 'lifecycle', 'agent_end', 'assistant_",
+      "time": "08:06:35"
+    },
+    {
+      "msg": "{'event': 'embedded_run_agent_end', 'tags': ['error_handling', 'lifecycle', 'agent_end', 'assistant_",
+      "time": "08:06:16"
+    },
+    {
+      "msg": "{'event': 'embedded_run_agent_end', 'tags': ['error_handling', 'lifecycle', 'agent_end', 'assistant_",
+      "time": "08:06:06"
+    }
+  ],
+  "pushed_at": 1774167489.6361206,
+  "pushed_at_str": "2026-03-22 10:18:09"
+}
