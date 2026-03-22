@@ -1,7 +1,7 @@
 {
   "gateway": {
     "up": true,
-    "pid": "8617"
+    "pid": "16626"
   },
   "primary": "openrouter-13/openrouter/free",
   "chat_active": 22,
@@ -48,46 +48,30 @@
   },
   "recent_logs": [
     {
-      "msg": "qmd update failed (Error: qmd update failed (code 1): node:internal/modules/cjs/loader:1865\n  return",
-      "time": "08:15:06"
+      "msg": "{\"subsystem\":\"memory\"}",
+      "time": "2026-03-"
     },
     {
-      "msg": "qmd update failed (Error: qmd update failed (code 1): node:internal/modules/cjs/loader:1865\n  return",
-      "time": "08:10:07"
+      "msg": "{\"subsystem\":\"memory\"}",
+      "time": "2026-03-"
     },
     {
-      "msg": "{'event': 'model_fallback_decision', 'tags': ['error_handling', 'model_fallback', 'candidate_succeed",
-      "time": "08:06:39"
+      "msg": "{\"subsystem\":\"memory\"}",
+      "time": "2026-03-"
     },
     {
-      "msg": "{'event': 'model_fallback_decision', 'tags': ['error_handling', 'model_fallback', 'candidate_failed'",
-      "time": "08:06:36"
+      "msg": "{\"subsystem\":\"gateway/reload\"}",
+      "time": "2026-03-"
     },
     {
-      "msg": "lane task error: lane=session:agent:main:telegram:direct:1737300067 durationMs=50566 error=\"Failover",
-      "time": "08:06:36"
+      "msg": "{\"subsystem\":\"gateway/reload\"}",
+      "time": "2026-03-"
     },
     {
-      "msg": "lane task error: lane=main durationMs=50473 error=\"FailoverError: \u26a0\ufe0f API rate limit reached. Please ",
-      "time": "08:06:36"
-    },
-    {
-      "msg": "{'event': 'embedded_run_failover_decision', 'tags': ['error_handling', 'failover', 'assistant', 'fal",
-      "time": "08:06:36"
-    },
-    {
-      "msg": "{'event': 'embedded_run_agent_end', 'tags': ['error_handling', 'lifecycle', 'agent_end', 'assistant_",
-      "time": "08:06:35"
-    },
-    {
-      "msg": "{'event': 'embedded_run_agent_end', 'tags': ['error_handling', 'lifecycle', 'agent_end', 'assistant_",
-      "time": "08:06:16"
-    },
-    {
-      "msg": "{'event': 'embedded_run_agent_end', 'tags': ['error_handling', 'lifecycle', 'agent_end', 'assistant_",
-      "time": "08:06:06"
+      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[36mdnsResultOrder=ipv4first (default-node22)\u001b[39m",
+      "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774167489.6361206,
-  "pushed_at_str": "2026-03-22 10:18:09"
+  "pushed_at": 1774167854.656089,
+  "pushed_at_str": "2026-03-22 10:24:14"
 }
