@@ -1,12 +1,16 @@
 {
   "gateway": {
     "up": true,
-    "pid": "31853"
+    "pid": "5086"
   },
-  "primary": "openrouter-12/openrouter/free",
-  "chat_active": 13,
+  "primary": "openrouter-23/openrouter/free",
+  "chat_active": 12,
   "chat_total": 31,
   "resting": [
+    {
+      "name": "openrouter-12",
+      "until": 1774203694.690542
+    },
     {
       "name": "openrouter-2",
       "until": 1774200044.9225566
@@ -42,10 +46,6 @@
     {
       "name": "openrouter-3",
       "until": 1774202584.4568932
-    },
-    {
-      "name": "openrouter-4",
-      "until": 1774202584.4568932
     }
   ],
   "pools": {
@@ -62,36 +62,36 @@
       "total": 6
     },
     "mem0_llm": {
-      "healthy": 2,
+      "healthy": 4,
       "total": 7
     }
   },
   "recent_logs": [
     {
+      "msg": "{\"subsystem\":\"gateway/reload\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"gateway/reload\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"gateway/channels/telegram\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "\u001b[33m[agent/embedded]\u001b[39m \u001b[33membedded run agent end: runId=3b190d0d-e0fa-4442-b033-a9e5f75867fe isError=true model=op",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"agent/embedded\"}",
+      "time": "2026-03-"
+    },
+    {
       "msg": "\u001b[34m[tools]\u001b[39m \u001b[33mtools.profile (coding) allowlist contains unknown entries (apply_patch, memory_search, memory_get",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"tools\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"gateway/reload\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"gateway/reload\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "[tools] exec failed: exec denied: allowlist miss",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "[tools] exec failed: exec denied: allowlist miss",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774196487.824454,
-  "pushed_at_str": "2026-03-22 18:21:27"
+  "pushed_at": 1774196909.0923114,
+  "pushed_at_str": "2026-03-22 18:28:29"
 }
