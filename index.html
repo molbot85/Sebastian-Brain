@@ -33,7 +33,26 @@ body{background-image:linear-gradient(rgba(30,30,58,.3) 1px,transparent 1px),lin
 .pmf-low{background:var(--red)}
 .resting-pill{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:8px;font-size:.62em;border:1px solid rgba(255,215,64,.2);color:var(--yellow);background:rgba(255,215,64,.04);font-family:var(--mono);margin:2px}
 
-</style></head><body><div class="cyber-orb cyber-orb-1"></div><div class="cyber-orb cyber-orb-2"></div>
+
+#ambient-glow{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0;transition:opacity 3s ease}
+#ambient-glow::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,var(--gc,transparent) 0%,transparent 70%);animation:amb-breathe 4s ease-in-out infinite}
+#ambient-glow::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,var(--gc,transparent) 0%,transparent 60%);animation:amb-breathe 4s ease-in-out infinite;animation-delay:2s}
+@keyframes amb-breathe{0%,100%{opacity:.15}50%{opacity:.35}}
+#ambient-glow.h-ok{--gc:rgba(0,230,118,.1);opacity:1}
+#ambient-glow.h-warn{--gc:rgba(255,215,64,.1);opacity:1}
+#ambient-glow.h-crit{--gc:rgba(255,82,82,.14);opacity:1;animation:amb-alert 2s ease-in-out infinite}
+#ambient-glow.h-dead{--gc:rgba(255,82,82,.2);opacity:1;animation:amb-alert 1.2s ease-in-out infinite}
+@keyframes amb-alert{0%,100%{opacity:.6}50%{opacity:1}}
+#live-status-bar{transition:background 3s ease,border-color 3s ease}
+#live-status-bar.sb-ok{background:linear-gradient(90deg,var(--bg2),rgba(0,230,118,.04),var(--bg2))}
+#live-status-bar.sb-warn{background:linear-gradient(90deg,var(--bg2),rgba(255,215,64,.05),var(--bg2));border-bottom-color:rgba(255,215,64,.2)}
+#live-status-bar.sb-crit{background:linear-gradient(90deg,var(--bg2),rgba(255,82,82,.06),var(--bg2));border-bottom-color:rgba(255,82,82,.3);animation:sb-pulse 2s ease-in-out infinite}
+@keyframes sb-pulse{0%,100%{border-bottom-color:rgba(255,82,82,.2)}50%{border-bottom-color:rgba(255,82,82,.5)}}
+.af{animation:af-anim .5s ease-in-out 3}
+@keyframes af-anim{0%,100%{opacity:1}50%{opacity:.2}}
+
+</style></head><body><div id="ambient-glow"></div>
+<div class="cyber-orb cyber-orb-1"></div><div class="cyber-orb cyber-orb-2"></div>
 <div id="live-status-bar">
   <div id="lsb-src"><span class="live-dot"></span> <span id="lsb-src-txt" style="color:var(--teal)">CONNECTING</span></div>
   <span class="lsb-sep">·</span>
@@ -80,6 +99,7 @@ function apply(d,src){
   const rc=rest.length>5?'var(--red)':rest.length>0?'var(--yellow)':'var(--green)';
   document.getElementById('lsb-rest').innerHTML='RESTING: <span style="color:'+rc+'">'+rest.length+'</span>';
   document.getElementById('lsb-ts').textContent=now.toLocaleTimeString();
+  setAmbient(d);
   const gb=document.getElementById('gw-badge');
   if(gb){gb.className=up?'badge badge-ok':'badge badge-warn';gb.textContent=up?'ONLINE':'OFFLINE';}
   sv('primary-val',pri.split('/').pop());
@@ -89,6 +109,29 @@ function apply(d,src){
   const pi=document.getElementById('live-pools-inject');
   if(pi&&Object.keys(pools).length)pi.innerHTML=Object.entries(pools).map(([r,i])=>'<div class="row live-val" style="flex-direction:column;align-items:stretch;padding:5px 0;"><div style="display:flex;justify-content:space-between;font-size:.72em;"><span class="lbl">'+r.replace(/_/g,' ')+'</span><span class="val" style="color:'+pnc(i.healthy,i.total)+'">'+i.healthy+'/'+i.total+'</span></div><div class="pool-mini-bar"><div class="pool-mini-fill '+pfc(i.healthy,i.total)+'" style="width:'+pc(i.healthy,i.total)+'%"></div></div></div>').join('');
 }
+
+function setAmbient(d){
+  const g=document.getElementById('ambient-glow');
+  const sb=document.getElementById('live-status-bar');
+  if(!g)return;
+  const up=d.gateway&&d.gateway.up;
+  const ca=d.chat_active||0,ct=d.chat_total||31;
+  const rest=d.resting||[];
+  const pools=d.pools||{};
+  const anyPoolDown=Object.values(pools).some(p=>p.healthy<p.total/2);
+  let state='ok';
+  if(!up)state='dead';
+  else if(ca<=5||rest.length>=20)state='crit';
+  else if(ca<=10||rest.length>=10||anyPoolDown)state='warn';
+  g.className='h-'+state;
+  if(sb)sb.className='sb-'+(state==='ok'?'ok':state==='warn'?'warn':'crit');
+  if((state==='crit'||state==='dead')&&!g.dataset.alerted){
+    g.dataset.alerted='1';
+    g.classList.add('af');
+    setTimeout(()=>g.classList.remove('af'),2000);
+  } else if(state==='ok'||state==='warn'){delete g.dataset.alerted;}
+}
+
 async function load(){
   try{
     try{const r=await fetch(LA,{signal:AbortSignal.timeout(2500)});if(!r.ok)throw 0;apply(await r.json(),'live');clearInterval(_t);_t=setInterval(load,30000);return;}catch(e){}
