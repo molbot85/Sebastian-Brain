@@ -1,10 +1,10 @@
 {
   "gateway": {
     "up": true,
-    "pid": "21731"
+    "pid": "24237"
   },
-  "primary": "openrouter-16/openrouter/free",
-  "chat_active": 16,
+  "primary": "openrouter-18/openrouter/free",
+  "chat_active": 15,
   "chat_total": 31,
   "resting": [
     {
@@ -34,6 +34,14 @@
     {
       "name": "openrouter-6",
       "until": 1774200044.9225566
+    },
+    {
+      "name": "openrouter-20",
+      "until": 1774202257.7053115
+    },
+    {
+      "name": "openrouter-28",
+      "until": 1774202257.7053115
     }
   ],
   "pools": {
@@ -50,36 +58,36 @@
       "total": 6
     },
     "mem0_llm": {
-      "healthy": 6,
+      "healthy": 4,
       "total": 7
     }
   },
   "recent_logs": [
     {
-      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[36mdnsResultOrder=ipv4first (default-node22)\u001b[39m",
+      "msg": "{\"subsystem\":\"gateway/channels/telegram\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "msg": "{\"subsystem\":\"gateway/channels/telegram\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[36mautoSelectFamily=true (default-node22)\u001b[39m",
+      "msg": "{\"subsystem\":\"gateway/reload\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "msg": "{\"subsystem\":\"gateway/reload\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"memory\"}",
+      "msg": "[tools] read failed: ENOENT: no such file or directory, access '/data/data/com.termux/files/home/.openclaw/workspace/mem",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"gateway\"}",
+      "msg": "[tools] read failed: ENOENT: no such file or directory, access '/data/data/com.termux/files/home/.openclaw/workspace/mem",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774195185.8342283,
-  "pushed_at_str": "2026-03-22 17:59:45"
+  "pushed_at": 1774195505.7376926,
+  "pushed_at_str": "2026-03-22 18:05:05"
 }
