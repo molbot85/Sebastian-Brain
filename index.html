@@ -295,7 +295,112 @@ body{background:#010206!important;background-image:linear-gradient(rgba(0,212,25
 .tnode.opt .dot{box-shadow:0 0 12px 3px rgba(255,215,64,.65)!important}
 .resting-pill{border:1px solid rgba(255,215,64,.4)!important;box-shadow:0 0 10px rgba(255,215,64,.25),inset 0 0 10px rgba(255,215,64,.05)!important;text-shadow:0 0 10px rgba(255,215,64,.55)!important}
 
+
+/* ══ LIGHT SWEEP ════════════════════════════════════════════ */
+.sweep-beam {
+  position: fixed;
+  top: 0;
+  left: -30%;
+  width: 8%;
+  height: 100vh;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0,212,255,.015) 20%,
+    rgba(124,77,255,.03) 50%,
+    rgba(0,229,255,.015) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 5;
+  transform: skewX(-8deg);
+  animation: sweep-lr 12s ease-in-out infinite;
+}
+.sweep-beam-2 {
+  position: fixed;
+  top: 0;
+  right: -30%;
+  width: 5%;
+  height: 100vh;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(124,77,255,.02) 30%,
+    rgba(0,229,255,.025) 50%,
+    rgba(124,77,255,.02) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 5;
+  transform: skewX(8deg);
+  animation: sweep-rl 18s ease-in-out infinite;
+  animation-delay: -9s;
+}
+
+@keyframes sweep-lr {
+  0%   { left: -15%; opacity: 0; }
+  5%   { opacity: 1; }
+  45%  { opacity: 1; }
+  50%  { left: 110%; opacity: 0; }
+  100% { left: 110%; opacity: 0; }
+}
+@keyframes sweep-rl {
+  0%   { right: -15%; opacity: 0; }
+  5%   { opacity: 1; }
+  45%  { opacity: 1; }
+  50%  { right: 110%; opacity: 0; }
+  100% { right: 110%; opacity: 0; }
+}
+
+/* Horizontal thin scan line */
+.scan-line {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0,212,255,.06) 20%,
+    rgba(0,229,255,.12) 50%,
+    rgba(0,212,255,.06) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 8px 1px rgba(0,229,255,.08);
+  pointer-events: none;
+  z-index: 6;
+  animation: scan-down 8s linear infinite;
+  animation-delay: -4s;
+}
+.scan-line-2 {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(124,77,255,.05) 30%,
+    rgba(124,77,255,.1) 50%,
+    rgba(124,77,255,.05) 70%,
+    transparent 100%
+  );
+  box-shadow: 0 0 6px 1px rgba(124,77,255,.07);
+  pointer-events: none;
+  z-index: 6;
+  animation: scan-down 13s linear infinite;
+  animation-delay: -7s;
+}
+@keyframes scan-down {
+  0%   { top: -2px; opacity: 0; }
+  3%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { top: 100vh; opacity: 0; }
+}
+
 </style></head><body><div id="ambient-glow"></div>
+<div class="sweep-beam"></div>
+<div class="sweep-beam-2"></div>
+<div class="scan-line"></div>
+<div class="scan-line-2"></div>
 <div class="cyber-orb cyber-orb-1"></div><div class="cyber-orb cyber-orb-2"></div>
 <div id="live-status-bar">
   <div id="lsb-src"><span class="live-dot"></span> <span id="lsb-src-txt" style="color:var(--teal)">CONNECTING</span></div>
@@ -387,5 +492,10 @@ async function load(){
   }
 }
 load();
+// Live clock — ticks every second independently
+setInterval(function(){
+  const e = document.getElementById('lsb-ts');
+  if(e) e.textContent = new Date().toLocaleTimeString();
+}, 1000);
 </script>
 </body></html>
