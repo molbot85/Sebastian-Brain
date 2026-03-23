@@ -31,30 +31,22 @@
   },
   "recent_logs": [
     {
-      "msg": "{\"subsystem\":\"gateway/reload\"}",
+      "msg": "{\"subsystem\":\"tools\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"gateway/reload\"}",
+      "msg": "{\"subsystem\":\"tools\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"gateway/channels/telegram\"}",
+      "msg": "{\"subsystem\":\"tools\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"gateway/channels/telegram\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"memory\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"gateway/channels/telegram\"}",
+      "msg": "{\"subsystem\":\"tools\"}",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774224621.2427158,
-  "pushed_at_str": "2026-03-23 02:10:21"
+  "pushed_at": 1774231891.3696804,
+  "pushed_at_str": "2026-03-23 04:11:31"
 }
