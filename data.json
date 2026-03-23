@@ -1,7 +1,7 @@
 {
   "gateway": {
     "up": true,
-    "pid": "24592"
+    "pid": "27441"
   },
   "primary": "openrouter-29/openrouter/free",
   "chat_active": 2,
@@ -72,6 +72,14 @@
   },
   "recent_logs": [
     {
+      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[33mfetch fallback: enabling sticky IPv4-only dispatcher (codes=ETIMEDOUT,ENETUNREACH)\u001b[39m",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "time": "2026-03-"
+    },
+    {
       "msg": "{\"subsystem\":\"gateway/reload\"}",
       "time": "2026-03-"
     },
@@ -86,18 +94,10 @@
     {
       "msg": "{\"subsystem\":\"telegram/network\"}",
       "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"memory\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"gateway\"}",
-      "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774265733.2723377,
-  "pushed_at_str": "2026-03-23 13:35:33",
+  "pushed_at": 1774265777.5466363,
+  "pushed_at_str": "2026-03-23 13:36:17",
   "total_providers": 74,
   "gemini_keys_total": 37,
   "or_keys_total": 37,
