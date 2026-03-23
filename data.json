@@ -1,7 +1,7 @@
 {
   "gateway": {
     "up": true,
-    "pid": "25651"
+    "pid": "26452"
   },
   "primary": "openrouter-9/openrouter/free",
   "chat_active": 26,
@@ -31,14 +31,30 @@
   },
   "recent_logs": [
     {
-      "msg": "Gateway failed to start: gateway already running (pid 23173); lock timeout after 5000ms\nIf the gateway is supervised, st",
+      "msg": "{\"subsystem\":\"memory\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[33mfetch fallback: enabling sticky IPv4-only dispatcher (codes=ETIMEDOUT,ENETUNREACH)\u001b[39m",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"telegram/network\"}",
       "time": "2026-03-"
     },
     {
       "msg": "{\"subsystem\":\"gateway\"}",
       "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"memory\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[36mdnsResultOrder=ipv4first (default-node22)\u001b[39m",
+      "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774241415.9987946,
-  "pushed_at_str": "2026-03-23 06:50:16"
+  "pushed_at": 1774241589.9515033,
+  "pushed_at_str": "2026-03-23 06:53:09"
 }
