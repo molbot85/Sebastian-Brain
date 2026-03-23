@@ -1,7 +1,7 @@
 {
   "gateway": {
     "up": true,
-    "pid": "22842"
+    "pid": "4457"
   },
   "primary": "openrouter-9/openrouter/free",
   "chat_active": 26,
@@ -31,32 +31,32 @@
   },
   "recent_logs": [
     {
-      "msg": "typing TTL reached (2m); stopping typing indicator",
+      "msg": "\u001b[33m[agents/tool-images]\u001b[39m \u001b[36mImage resized to fit limits: file_11---e7188845-b750-4480-9ba8-2dfa9457c7ff.jpg 1280",
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[31msendChatAction failed: Network request for 'sendChatAction' failed!\u001b[39m",
+      "msg": "{\"subsystem\":\"agents/tool-images\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"telegram/api\"}",
+      "msg": "\u001b[33m[agent/embedded]\u001b[39m \u001b[33membedded run agent end: runId=b27e0ddb-6c80-4267-93af-ab9beae07b24 isError=true model=op",
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[31msendChatAction failed: Network request for 'sendChatAction' failed!\u001b[39m",
+      "msg": "{\"subsystem\":\"agent/embedded\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"telegram/api\"}",
+      "msg": "\u001b[34m[tools]\u001b[39m \u001b[33mtools.profile (coding) allowlist contains unknown entries (apply_patch, memory_search, memory_get",
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[33m[agent/embedded]\u001b[39m \u001b[33membedded run agent end: runId=b839914f-ff4c-49af-a7e3-f9f29f3ccf62 isError=true model=op",
+      "msg": "{\"subsystem\":\"tools\"}",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774248403.4751694,
-  "pushed_at_str": "2026-03-23 08:46:43",
+  "pushed_at": 1774251132.8073895,
+  "pushed_at_str": "2026-03-23 09:32:12",
   "total_providers": 74,
   "gemini_keys_total": 37,
   "or_keys_total": 37,
