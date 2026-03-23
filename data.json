@@ -1,7 +1,7 @@
 {
   "gateway": {
     "up": true,
-    "pid": "4457"
+    "pid": "11261"
   },
   "primary": "openrouter-9/openrouter/free",
   "chat_active": 26,
@@ -31,15 +31,7 @@
   },
   "recent_logs": [
     {
-      "msg": "\u001b[33m[agents/tool-images]\u001b[39m \u001b[36mImage resized to fit limits: file_11---e7188845-b750-4480-9ba8-2dfa9457c7ff.jpg 1280",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"agents/tool-images\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "\u001b[33m[agent/embedded]\u001b[39m \u001b[33membedded run agent end: runId=b27e0ddb-6c80-4267-93af-ab9beae07b24 isError=true model=op",
+      "msg": "\u001b[33m[agent/embedded]\u001b[39m \u001b[33membedded run agent end: runId=440dcd18-6b1c-4b0b-a91f-03ec7e511a18 isError=true model=op",
       "time": "2026-03-"
     },
     {
@@ -47,16 +39,24 @@
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[34m[tools]\u001b[39m \u001b[33mtools.profile (coding) allowlist contains unknown entries (apply_patch, memory_search, memory_get",
+      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[33mfetch fallback: enabling sticky IPv4-only dispatcher (codes=ETIMEDOUT,ENETUNREACH)\u001b[39m",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"tools\"}",
+      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "\u001b[33m[agents/tool-images]\u001b[39m \u001b[36mImage resized to fit limits: file_11---a754200e-7120-45e3-a451-0b2077e4b8a6.jpg 1280",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"agents/tool-images\"}",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774251132.8073895,
-  "pushed_at_str": "2026-03-23 09:32:12",
+  "pushed_at": 1774252795.139439,
+  "pushed_at_str": "2026-03-23 09:59:55",
   "total_providers": 74,
   "gemini_keys_total": 37,
   "or_keys_total": 37,
