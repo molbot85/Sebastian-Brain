@@ -3,8 +3,8 @@
     "up": true,
     "pid": "11261"
   },
-  "primary": "openrouter-9/openrouter/free",
-  "chat_active": 26,
+  "primary": "gemini-19/gemini-2.5-flash-lite",
+  "chat_active": 21,
   "chat_total": 48,
   "resting": [],
   "pools": {
@@ -31,32 +31,32 @@
   },
   "recent_logs": [
     {
-      "msg": "\u001b[33m[agent/embedded]\u001b[39m \u001b[33membedded run agent end: runId=440dcd18-6b1c-4b0b-a91f-03ec7e511a18 isError=true model=op",
+      "msg": "{\"subsystem\":\"memory\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"agent/embedded\"}",
+      "msg": "{\"subsystem\":\"gateway/reload\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[33mfetch fallback: enabling sticky IPv4-only dispatcher (codes=ETIMEDOUT,ENETUNREACH)\u001b[39m",
+      "msg": "{\"subsystem\":\"gateway/reload\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "msg": "[tools] read failed: EACCES: permission denied, access '/'",
       "time": "2026-03-"
     },
     {
-      "msg": "\u001b[33m[agents/tool-images]\u001b[39m \u001b[36mImage resized to fit limits: file_11---a754200e-7120-45e3-a451-0b2077e4b8a6.jpg 1280",
+      "msg": "[tools] read failed: EACCES: permission denied, access '/'",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"agents/tool-images\"}",
+      "msg": "{\"subsystem\":\"memory\"}",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774252795.139439,
-  "pushed_at_str": "2026-03-23 09:59:55",
+  "pushed_at": 1774260127.977184,
+  "pushed_at_str": "2026-03-23 12:02:07",
   "total_providers": 74,
   "gemini_keys_total": 37,
   "or_keys_total": 37,
@@ -64,7 +64,7 @@
   "or_chat_count": 30,
   "pool_keys_count": 26,
   "exec_pool_count": 1,
-  "fallback_count": 26,
+  "fallback_count": 21,
   "openclaw_version": "2026.3.13",
   "check_interval_or": 21600,
   "check_interval_gemini": 7200,
