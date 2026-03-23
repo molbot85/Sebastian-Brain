@@ -1,7 +1,7 @@
 {
   "gateway": {
     "up": true,
-    "pid": "20480"
+    "pid": "25651"
   },
   "primary": "openrouter-9/openrouter/free",
   "chat_active": 26,
@@ -31,30 +31,14 @@
   },
   "recent_logs": [
     {
-      "msg": "{\"subsystem\":\"tools\"}",
+      "msg": "Gateway failed to start: gateway already running (pid 23173); lock timeout after 5000ms\nIf the gateway is supervised, st",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"tools\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"tools\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"tools\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"tools\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"tools\"}",
+      "msg": "{\"subsystem\":\"gateway\"}",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774239080.2342336,
-  "pushed_at_str": "2026-03-23 06:11:20"
+  "pushed_at": 1774241415.9987946,
+  "pushed_at_str": "2026-03-23 06:50:16"
 }
