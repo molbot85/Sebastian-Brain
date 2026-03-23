@@ -1,7 +1,7 @@
 {
   "gateway": {
     "up": true,
-    "pid": "27911"
+    "pid": "20825"
   },
   "primary": "openrouter-9/openrouter/free",
   "chat_active": 26,
@@ -31,32 +31,32 @@
   },
   "recent_logs": [
     {
-      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[36mdnsResultOrder=ipv4first (default-node22)\u001b[39m",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"telegram/network\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[36mautoSelectFamily=true (default-node22)\u001b[39m",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"telegram/network\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"memory\"}",
+      "msg": "typing TTL reached (2m); stopping typing indicator",
       "time": "2026-03-"
     },
     {
       "msg": "\u001b[34m[telegram]\u001b[39m \u001b[31msendChatAction failed: Network request for 'sendChatAction' failed!\u001b[39m",
       "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"telegram/api\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "\u001b[34m[telegram]\u001b[39m \u001b[31msendChatAction failed: Network request for 'sendChatAction' failed!\u001b[39m",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"telegram/api\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "\u001b[33m[agent/embedded]\u001b[39m \u001b[33membedded run agent end: runId=b839914f-ff4c-49af-a7e3-f9f29f3ccf62 isError=true model=op",
+      "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774241878.051682,
-  "pushed_at_str": "2026-03-23 06:57:58",
+  "pushed_at": 1774248393.5980618,
+  "pushed_at_str": "2026-03-23 08:46:33",
   "total_providers": 74,
   "gemini_keys_total": 37,
   "or_keys_total": 37,
