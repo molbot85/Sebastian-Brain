@@ -1,7 +1,7 @@
 {
   "gateway": {
     "up": true,
-    "pid": "16851"
+    "pid": "29319"
   },
   "primary": "openrouter-35/openrouter/free",
   "chat_active": 0,
@@ -79,8 +79,8 @@
     }
   },
   "recent_logs": [],
-  "pushed_at": 1774386389.844203,
-  "pushed_at_str": "2026-03-24 23:06:29",
+  "pushed_at": 1774386488.4411902,
+  "pushed_at_str": "2026-03-24 23:08:08",
   "total_providers": 74,
   "gemini_keys_total": 37,
   "or_keys_total": 37,
