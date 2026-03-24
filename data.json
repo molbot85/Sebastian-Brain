@@ -1,9 +1,9 @@
 {
   "gateway": {
     "up": true,
-    "pid": "321"
+    "pid": "1843"
   },
-  "primary": "openrouter-17/openrouter/free",
+  "primary": "openrouter-7/openrouter/free",
   "chat_active": 12,
   "chat_total": 42,
   "resting": [
@@ -80,32 +80,32 @@
   },
   "recent_logs": [
     {
-      "msg": "{\"subsystem\":\"sessions/store\"}",
+      "msg": "{\"subsystem\":\"memory\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "msg": "{\"subsystem\":\"gateway\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "msg": "{\"subsystem\":\"memory\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"gateway/channels/telegram\"}",
+      "msg": "{\"subsystem\":\"tools\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"gateway/hooks\"}",
+      "msg": "{\"subsystem\":\"memory\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"hooks:loader\"}",
+      "msg": "{\"subsystem\":\"memory\"}",
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774331518.7239304,
-  "pushed_at_str": "2026-03-24 07:51:58",
+  "pushed_at": 1774331641.1126928,
+  "pushed_at_str": "2026-03-24 07:54:01",
   "total_providers": 74,
   "gemini_keys_total": 37,
   "or_keys_total": 37,
