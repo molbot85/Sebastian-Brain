@@ -1,7 +1,7 @@
 {
   "gateway": {
     "up": true,
-    "pid": "9795"
+    "pid": "10703"
   },
   "primary": "openrouter-18/openrouter/free",
   "chat_active": 9,
@@ -22,11 +22,11 @@
   ],
   "pools": {
     "qmd_embed": {
-      "healthy": 0,
+      "healthy": 3,
       "total": 6
     },
     "mem0_embedder": {
-      "healthy": 1,
+      "healthy": 4,
       "total": 6
     },
     "web_search": {
@@ -52,32 +52,32 @@
   },
   "recent_logs": [
     {
-      "msg": "[openclaw] Uncaught exception: TypeError: Cannot read properties of null (reading 'setServername')\n    at TLSSocket.setS",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"memory\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"gateway\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"memory\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"memory\"}",
+      "msg": "{\"subsystem\":\"telegram/network\"}",
       "time": "2026-03-"
     },
     {
       "msg": "{\"subsystem\":\"telegram/network\"}",
       "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"gateway/channels/telegram\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"gateway/hooks\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"hooks:loader\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "bonjour: advertised gateway fqdn=localhost (OpenClaw)._openclaw-gw._tcp.local. host=openclaw.local. port=18789 state=ann",
+      "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774377769.5590098,
-  "pushed_at_str": "2026-03-24 20:42:49",
+  "pushed_at": 1774377864.338356,
+  "pushed_at_str": "2026-03-24 20:44:24",
   "total_providers": 74,
   "gemini_keys_total": 37,
   "or_keys_total": 37,
