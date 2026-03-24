@@ -1,7 +1,7 @@
 {
   "gateway": {
     "up": true,
-    "pid": "21604"
+    "pid": "30598"
   },
   "primary": "openrouter-10/openrouter/free",
   "chat_active": 11,
@@ -44,11 +44,7 @@
   },
   "recent_logs": [
     {
-      "msg": "{\"subsystem\":\"gateway/reload\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"gateway/reload\"}",
+      "msg": "{\"subsystem\":\"telegram/network\"}",
       "time": "2026-03-"
     },
     {
@@ -56,11 +52,15 @@
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"memory\"}",
+      "msg": "{\"subsystem\":\"telegram/network\"}",
       "time": "2026-03-"
     },
     {
-      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "msg": "{\"subsystem\":\"gateway/channels/telegram\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "bonjour: advertised gateway fqdn=localhost (OpenClaw)._openclaw-gw._tcp.local. host=openclaw.local. port=18789 state=ann",
       "time": "2026-03-"
     },
     {
@@ -68,8 +68,8 @@
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774372328.1783435,
-  "pushed_at_str": "2026-03-24 19:12:08",
+  "pushed_at": 1774374697.505557,
+  "pushed_at_str": "2026-03-24 19:51:37",
   "total_providers": 74,
   "gemini_keys_total": 37,
   "or_keys_total": 37,
