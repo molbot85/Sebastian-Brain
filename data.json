@@ -1,53 +1,12 @@
 {
   "gateway": {
     "up": true,
-    "pid": "1843"
+    "pid": "6484"
   },
   "primary": "openrouter-7/openrouter/free",
   "chat_active": 12,
   "chat_total": 42,
-  "resting": [
-    {
-      "name": "gemini-21",
-      "until": 1774339199.269616
-    },
-    {
-      "name": "gemini-19",
-      "until": 1774339199.6057706
-    },
-    {
-      "name": "gemini-20",
-      "until": 1774339199.7580857
-    },
-    {
-      "name": "gemini-22",
-      "until": 1774339199.8852367
-    },
-    {
-      "name": "gemini-23",
-      "until": 1774339199.6424112
-    },
-    {
-      "name": "gemini-24",
-      "until": 1774339199.1636393
-    },
-    {
-      "name": "gemini-25",
-      "until": 1774339199.7573676
-    },
-    {
-      "name": "gemini-26",
-      "until": 1774339199.762068
-    },
-    {
-      "name": "gemini-27",
-      "until": 1774339199.3773243
-    },
-    {
-      "name": "gemini-28",
-      "until": 1774339199.9608066
-    }
-  ],
+  "resting": [],
   "pools": {
     "qmd_embed": {
       "healthy": 3,
@@ -80,19 +39,19 @@
   },
   "recent_logs": [
     {
-      "msg": "{\"subsystem\":\"memory\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"gateway\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"memory\"}",
-      "time": "2026-03-"
-    },
-    {
       "msg": "{\"subsystem\":\"tools\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"memory\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"memory\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"memory\"}",
       "time": "2026-03-"
     },
     {
@@ -104,8 +63,8 @@
       "time": "2026-03-"
     }
   ],
-  "pushed_at": 1774331641.1126928,
-  "pushed_at_str": "2026-03-24 07:54:01",
+  "pushed_at": 1774340887.7524784,
+  "pushed_at_str": "2026-03-24 10:28:07",
   "total_providers": 74,
   "gemini_keys_total": 37,
   "or_keys_total": 37,
