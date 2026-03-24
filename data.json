@@ -1,10 +1,10 @@
 {
   "gateway": {
     "up": true,
-    "pid": "19986"
+    "pid": "17181"
   },
-  "primary": "openrouter-33/openrouter/free",
-  "chat_active": 4,
+  "primary": "openrouter-35/openrouter/free",
+  "chat_active": 3,
   "chat_total": 42,
   "resting": [
     {
@@ -26,6 +26,10 @@
     {
       "name": "openrouter-24",
       "until": 1774396799.6409874
+    },
+    {
+      "name": "openrouter-33",
+      "until": 1774396799.8481615
     },
     {
       "name": "openrouter-7",
@@ -75,8 +79,8 @@
     }
   },
   "recent_logs": [],
-  "pushed_at": 1774385436.0589902,
-  "pushed_at_str": "2026-03-24 22:50:36",
+  "pushed_at": 1774385830.199227,
+  "pushed_at_str": "2026-03-24 22:57:10",
   "total_providers": 74,
   "gemini_keys_total": 37,
   "or_keys_total": 37,
@@ -84,7 +88,7 @@
   "or_chat_count": 30,
   "pool_keys_count": 31,
   "exec_pool_count": 1,
-  "fallback_count": 4,
+  "fallback_count": 3,
   "openclaw_version": "2026.3.13",
   "check_interval_or": 21600,
   "check_interval_gemini": 7200,
