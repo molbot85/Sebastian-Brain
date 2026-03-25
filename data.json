@@ -78,34 +78,9 @@
       "total": 3
     }
   },
-  "recent_logs": [
-    {
-      "msg": "{\"subsystem\":\"telegram/network\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"telegram/network\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"memory\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"telegram/network\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"gateway\"}",
-      "time": "2026-03-"
-    },
-    {
-      "msg": "{\"subsystem\":\"telegram/network\"}",
-      "time": "2026-03-"
-    }
-  ],
-  "pushed_at": 1774405386.2206542,
-  "pushed_at_str": "2026-03-25 04:23:06",
+  "recent_logs": [],
+  "pushed_at": 1774412439.695091,
+  "pushed_at_str": "2026-03-25 06:20:39",
   "total_providers": 74,
   "gemini_keys_total": 37,
   "or_keys_total": 37,
