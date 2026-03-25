@@ -1,51 +1,51 @@
 {
   "gateway": {
     "up": true,
-    "pid": "8407"
+    "pid": "31866"
   },
   "primary": "openrouter-35/openrouter/free",
   "chat_active": 0,
   "chat_total": 42,
   "resting": [
     {
-      "name": "openrouter-10",
-      "until": 1774396799.9951437
+      "name": "gemini-28",
+      "until": 1774425595.4939237
     },
     {
-      "name": "openrouter-17",
-      "until": 1774396799.1349046
+      "name": "gemini-25",
+      "until": 1774425599.4733267
     },
     {
-      "name": "openrouter-20",
-      "until": 1774396799.8860245
+      "name": "gemini-26",
+      "until": 1774425598.4733267
     },
     {
-      "name": "openrouter-21",
-      "until": 1774396799.3490837
+      "name": "gemini-27",
+      "until": 1774425598.4733267
     },
     {
-      "name": "openrouter-24",
-      "until": 1774396799.6409874
+      "name": "gemini-29",
+      "until": 1774425597.4733267
     },
     {
-      "name": "openrouter-33",
-      "until": 1774396799.8481615
+      "name": "gemini-30",
+      "until": 1774425597.4733267
     },
     {
-      "name": "openrouter-35",
-      "until": 1774396799.4889283
+      "name": "gemini-31",
+      "until": 1774425596.4733267
     },
     {
-      "name": "openrouter-36",
-      "until": 1774396799.0439577
+      "name": "gemini-32",
+      "until": 1774425596.4733267
     },
     {
-      "name": "openrouter-37",
-      "until": 1774396799.3129911
+      "name": "gemini-33",
+      "until": 1774425595.4733267
     },
     {
-      "name": "openrouter-7",
-      "until": 1774396799.1345549
+      "name": "gemini-34",
+      "until": 1774425595.4733267
     }
   ],
   "pools": {
@@ -78,9 +78,34 @@
       "total": 3
     }
   },
-  "recent_logs": [],
-  "pushed_at": 1774388710.9848583,
-  "pushed_at_str": "2026-03-24 23:45:10",
+  "recent_logs": [
+    {
+      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"memory\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"gateway\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "time": "2026-03-"
+    }
+  ],
+  "pushed_at": 1774405386.2206542,
+  "pushed_at_str": "2026-03-25 04:23:06",
   "total_providers": 74,
   "gemini_keys_total": 37,
   "or_keys_total": 37,
