@@ -1,51 +1,15 @@
 {
   "gateway": {
     "up": true,
-    "pid": "31866"
+    "pid": "5643"
   },
   "primary": "openrouter-35/openrouter/free",
   "chat_active": 0,
   "chat_total": 42,
   "resting": [
     {
-      "name": "gemini-28",
-      "until": 1774425595.4939237
-    },
-    {
-      "name": "gemini-25",
-      "until": 1774425599.4733267
-    },
-    {
-      "name": "gemini-26",
-      "until": 1774425598.4733267
-    },
-    {
-      "name": "gemini-27",
-      "until": 1774425598.4733267
-    },
-    {
-      "name": "gemini-29",
-      "until": 1774425597.4733267
-    },
-    {
-      "name": "gemini-30",
-      "until": 1774425597.4733267
-    },
-    {
-      "name": "gemini-31",
-      "until": 1774425596.4733267
-    },
-    {
-      "name": "gemini-32",
-      "until": 1774425596.4733267
-    },
-    {
-      "name": "gemini-33",
-      "until": 1774425595.4733267
-    },
-    {
-      "name": "gemini-34",
-      "until": 1774425595.4733267
+      "name": "gemini-35",
+      "until": 1774433203.1980016
     }
   ],
   "pools": {
@@ -78,9 +42,34 @@
       "total": 3
     }
   },
-  "recent_logs": [],
-  "pushed_at": 1774419642.9648426,
-  "pushed_at_str": "2026-03-25 08:20:42",
+  "recent_logs": [
+    {
+      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"memory\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"gateway\"}",
+      "time": "2026-03-"
+    },
+    {
+      "msg": "{\"subsystem\":\"telegram/network\"}",
+      "time": "2026-03-"
+    }
+  ],
+  "pushed_at": 1774428824.5080678,
+  "pushed_at_str": "2026-03-25 10:53:44",
   "total_providers": 74,
   "gemini_keys_total": 37,
   "or_keys_total": 37,
